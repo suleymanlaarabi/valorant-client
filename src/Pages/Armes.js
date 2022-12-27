@@ -53,7 +53,7 @@ const Armes = () => {
                         })
                     }} className='Arme' key={key}>
                         <h2>{arme.pseudo}</h2>
-                        <img src={arme.imageLink} />
+                        <img className='imgArme' src={arme.imageLink} />
                     </div>)
                 })}
             </div>

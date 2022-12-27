@@ -10,13 +10,19 @@
 
     box-sizing: border-box;
     background: rgb(18, 21, 33);
+    transition: all 0.3s;
+    border-radius: 5px;
     
 }
 
 .Carte:hover {
     cursor: pointer;
     background: rgba(255, 255, 255, 0.186);
+    transform: scale(1.1);
+    z-index: 100;
+    border-radius: 20px;
 }
+
 
 img {
     width: 100%;
