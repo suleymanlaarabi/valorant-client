@@ -1,5 +1,5 @@
 nav{
-    height: 60px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +43,8 @@ a:hover p{
 }
 
 .logo{
-    width: 58px;
+    width: 120px;
     position: absolute;
     left: 0px;
-    top: -3px;
+    top: -5px;
 }
