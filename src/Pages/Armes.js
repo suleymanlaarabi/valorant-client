@@ -10,14 +10,12 @@ const Armes = () => {
         setArmesInfo([])
         axios.get('https://valorant-api.com/v1/weapons').then(res => {
             res.data.data.map((data) => {
-                console.log(data)
                 setArmesInfo(current => [...current, {
                     pseudo: data.displayName,
                     armeState: data.weaponStats,
                     imageLink: data.displayIcon
                 }])
             })
-            console.log(res)
         })
     }, [])
 

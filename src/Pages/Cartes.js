@@ -9,14 +9,12 @@ const Cartes = () => {
         setCarteInfo([])
         axios.get('https://valorant-api.com/v1/maps').then(res => {
             res.data.data.map((data) => {
-                console.log(data)
                 setCarteInfo(current => [...current, {
                     pseudo: data.displayName,
                     imageLink: data.splash,
                     mapImageLink: data.displayIcon
                 }])
             })
-            console.log(res)
         })
     }, [])
 

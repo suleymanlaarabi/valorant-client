@@ -19,7 +19,6 @@ const Agents = () => {
 
             })
 
-            console.log(res)
 
         })
 

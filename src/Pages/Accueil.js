@@ -5,6 +5,7 @@ import "./css/Accueil.css"
 import GroupsIcon from '@mui/icons-material/Groups';
 import MapIcon from '@mui/icons-material/Map';
 import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
+import Events from '../Composant/Events';
 const Accueil = () => {
     const navigate = useNavigate()
     return (
@@ -36,6 +37,15 @@ const Accueil = () => {
                     <FeaturesCard onClick={() => { navigate("/Agents") }} title="Agents" description="Donnée de tout les agents et leur description" icon={<GroupsIcon fontSize='large' className='icon' />} />
                     <FeaturesCard onClick={() => { navigate("/Armes") }} title="Armes" description="Donnée de toute les armes et leur state" icon={<LocalPoliceIcon fontSize='large' className='icon' />} />
                     <FeaturesCard onClick={() => { navigate("/Cartes") }} title="Cartes" description="Donnée de tout les cartes et leur plans" icon={<MapIcon fontSize='large' className='icon' />} />
+                </div>
+
+            </div>
+            <div className='features'>
+                <h2>EVENEMENTS</h2>
+
+                <div className='FeaturesSubBar'></div>
+                <div className='featuresCardAll'>
+                    <Events />
                 </div>
 
             </div>
