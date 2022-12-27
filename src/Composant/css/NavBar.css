@@ -4,6 +4,7 @@ nav{
     justify-content: center;
     align-items: center;
     background: rgba(15, 17, 24, 0.725);
+    z-index: 15;
 }
 a{
     height: 100%;
@@ -39,4 +40,11 @@ a:hover p{
 
 .active p{
         transform: translateY(1px);
+}
+
+.logo{
+    width: 60px;
+    position: absolute;
+    left: 0px;
+    top: -3px;
 }

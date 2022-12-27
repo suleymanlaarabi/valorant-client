@@ -5,6 +5,7 @@ const NavBar = () => {
     const navigate = useNavigate()
     return (
         <nav>
+            <img className='logo' src="./logo.png" alt="" />
             <NavLink to="/">
                 <p>Accueil</p>
             </NavLink>
