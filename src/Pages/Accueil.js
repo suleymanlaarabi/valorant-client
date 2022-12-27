@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FeaturesCard from '../Composant/FeaturesCard';
 import "./css/Accueil.css"
@@ -6,8 +6,26 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import MapIcon from '@mui/icons-material/Map';
 import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
 import Events from '../Composant/Events';
+import gsap from 'gsap';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
 const Accueil = () => {
     const navigate = useNavigate()
+    const FeaturesCardRef = useRef()
+    const [FeaturesCardIsVisible, setFeaturesCardIsVisible] = useState(false)
+    if (FeaturesCardIsVisible == true) {
+        gsap.to(".featuresCard", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+
+    }
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            const entry = entries[0]
+            setFeaturesCardIsVisible(entry.isIntersecting)
+
+        })
+        observer.observe(FeaturesCardRef.current)
+    }, [])
+
     return (
         <div className='Accueil'>
             <div className='heroBanner'>
@@ -33,7 +51,7 @@ const Accueil = () => {
                 <h2>FEATURES</h2>
 
                 <div className='FeaturesSubBar'></div>
-                <div className='featuresCardAll'>
+                <div ref={FeaturesCardRef} onScroll={() => { console.log("test") }} className='featuresCardAll'>
                     <FeaturesCard onClick={() => { navigate("/Agents") }} title="Agents" description="Donnée de tout les agents et leur description" icon={<GroupsIcon fontSize='large' className='icon' />} />
                     <FeaturesCard onClick={() => { navigate("/Armes") }} title="Armes" description="Donnée de toute les armes et leur state" icon={<LocalPoliceIcon fontSize='large' className='icon' />} />
                     <FeaturesCard onClick={() => { navigate("/Cartes") }} title="Cartes" description="Donnée de tout les cartes et leur plans" icon={<MapIcon fontSize='large' className='icon' />} />

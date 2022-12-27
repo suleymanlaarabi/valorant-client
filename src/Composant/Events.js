@@ -1,7 +1,8 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import FeaturesCard from './FeaturesCard';
 import CelebrationIcon from '@mui/icons-material/Celebration';
+import gsap from 'gsap';
 const Events = () => {
     const [EventInfo, setEventInfo] = useState([])
     useEffect(() => {
@@ -14,7 +15,11 @@ const Events = () => {
                 }])
             })
         })
+
     }, [])
+    useLayoutEffect(() => {
+
+    }, [EventInfo])
     return (
         <>
             {EventInfo.map((data, key) => {
