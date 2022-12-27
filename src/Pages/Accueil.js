@@ -41,7 +41,7 @@ const Accueil = () => {
 
             </div>
             <div className='features'>
-                <h2>EVENEMENTS</h2>
+                <h2>EVENEMENTS VALORANT</h2>
 
                 <div className='FeaturesSubBar'></div>
                 <div className='featuresCardAll'>

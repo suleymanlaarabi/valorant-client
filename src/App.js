@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Footer from './Composant/Footer';
 import NavBar from './Composant/NavBar';
 import Accueil from './Pages/Accueil';
 import Agents from './Pages/Agents';
@@ -19,6 +20,7 @@ function App() {
             <Route path='/Cartes' element={<Cartes />} />
 
           </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
       <div className='AppMobile'>Ce site a besoin d'une largeur d'ecran superieur a 950pixel
