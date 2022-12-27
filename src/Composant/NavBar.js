@@ -1,21 +1,27 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import "./css/NavBar.css"
 const NavBar = () => {
-    const navigate = useNavigate()
+    useEffect(() => {
+        gsap.to(".buttonAnim", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 }).then(() => {
+            gsap.to(".logo", { opacity: 1, duration: 0.4, y: 105 })
+        })
+
+    }, [])
     return (
         <nav>
             <img className='logo' src="./logo.png" alt="" />
-            <NavLink to="/">
+            <NavLink className="buttonAnim" to="/">
                 <p>Accueil</p>
             </NavLink>
-            <NavLink to="/Agents">
+            <NavLink className="buttonAnim" to="/Agents">
                 <p>Agents</p>
             </NavLink>
-            <NavLink to="/Armes">
+            <NavLink className="buttonAnim" to="/Armes">
                 <p>Armes</p>
             </NavLink>
-            <NavLink to="/Cartes">
+            <NavLink className="buttonAnim" to="/Cartes">
                 <p>Cartes</p>
             </NavLink>
 

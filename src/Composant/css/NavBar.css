@@ -21,6 +21,8 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+        top: -100px;
 }
 a:hover{
     opacity: 0.8;
@@ -46,5 +48,10 @@ a:hover p{
     width: 120px;
     position: absolute;
     left: 0px;
-    top: -5.5px;
+    top: -105.5px;
+    opacity: 0;
+
+}
+.buttonAnim{
+    opacity: 0;
 }
