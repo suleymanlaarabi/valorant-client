@@ -6,6 +6,7 @@
     height: 100vh;
     width: 100vw;
         z-index: 1500;
+                animation: opacity 0.4s;
 }
 
 .Modal{
@@ -20,6 +21,7 @@
     background: rgb(18, 21, 33);
             overflow-y: hidden;
         padding: 10px;
+                animation: startModal 0.3s;
 
 }
 .Modal img{
@@ -29,4 +31,17 @@ margin-bottom: 50px;
 
 .Modal p {
     font-size: 1.3em;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+}
+
+@keyframes startModal {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
 }

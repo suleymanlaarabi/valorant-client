@@ -7,6 +7,25 @@
   
   
 }
+.AppMobile{
+  display: none;
+}
+
+@media (max-width:950px) {
+  .App {
+    display: none;
+  }
+    .AppMobile {
+      display: block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      text-align: center;
+      flex-direction: column;
+    }
+}
 
 .App-logo {
   height: 40vmin;

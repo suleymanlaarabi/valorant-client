@@ -4,12 +4,20 @@ import "./css/ModalArmes.css"
 const ModalArmes = (props) => {
 
     useEffect(() => {
-        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.5 })
+        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3 })
 
     }, [])
+    const closeModal = () => {
+        gsap.to(".Modal", { opacity: 0, duration: 0.3, y: 200, x: 200, scale: 0.6 }).then(() => {
+            props.close()
+        })
+        gsap.to(".BackgroundModal", { opacity: 0, duration: 0.3 })
+
+
+    }
     return (
         <>
-            <div onClick={props.close} className='BackgroundModal'>
+            <div onClick={closeModal} className='BackgroundModal'>
 
             </div>
             <div className='Modal'>
@@ -21,7 +29,7 @@ const ModalArmes = (props) => {
                     <h3>Time for equip : <span>{props.armeInfo.armeState.equipTimeSeconds}</span></h3>
 
                 </div>
-                <div className="ModalCloseButton animate" onClick={props.close}>
+                <div className="ModalCloseButton animate" onClick={closeModal}>
                     <button className="btn btn--light">
                         <span className="btn__inner">
                             <span className="btn__slide"></span>
