@@ -33,9 +33,9 @@ const Accueil = () => {
 
                 <div className='FeaturesSubBar'></div>
                 <div className='featuresCardAll'>
-                    <FeaturesCard onClick={() => { navigate("/Agents") }} title="Agents" description="Data and assets of all agents and their abilities" icon={<GroupsIcon fontSize='large' className='icon' />} />
-                    <FeaturesCard onClick={() => { navigate("/Armes") }} title="Armes" description="Data and assets of all weapon" icon={<LocalPoliceIcon fontSize='large' className='icon' />} />
-                    <FeaturesCard onClick={() => { navigate("/Cartes") }} title="Cartes" description="Data and assets of all playable maps" icon={<MapIcon fontSize='large' className='icon' />} />
+                    <FeaturesCard onClick={() => { navigate("/Agents") }} title="Agents" description="Donnée de tout les agents et leur description" icon={<GroupsIcon fontSize='large' className='icon' />} />
+                    <FeaturesCard onClick={() => { navigate("/Armes") }} title="Armes" description="Donnée de toute les armes et leur state" icon={<LocalPoliceIcon fontSize='large' className='icon' />} />
+                    <FeaturesCard onClick={() => { navigate("/Cartes") }} title="Cartes" description="Donnée de tout les cartes et leur plans" icon={<MapIcon fontSize='large' className='icon' />} />
                 </div>
 
             </div>

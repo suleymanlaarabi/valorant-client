@@ -42,7 +42,7 @@ const Armes = () => {
             {ArmeClicked.isClicked &&
                 <ModalArmes armeInfo={ArmeClicked} close={closeModal} />}
 
-            <h1>Armes</h1>
+            <h2>Armes</h2>
             <div className='Armes'>
 
                 {ArmesInfo.map((arme, key) => {

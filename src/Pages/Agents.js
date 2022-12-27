@@ -53,11 +53,12 @@ const Agents = () => {
 
 
     return (
-        <div>
+        <div className='AgentsPage'>
             {AgentClicked.isClicked &&
                 <ModalAgents agentInfo={AgentClicked} close={closeModal} />}
 
-            <h1>Agents</h1>
+            <h2 className='title'>Agents</h2>
+
             <div className='Agents '>
                 {AgentInfo.map((agent, key) => {
 
