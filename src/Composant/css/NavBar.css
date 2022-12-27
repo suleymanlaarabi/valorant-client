@@ -1,0 +1,20 @@
+nav{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    height: 50px;
+    width: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: rgb(219, 219, 219);
+}
+button:hover{
+    opacity: 0.8;
+}
