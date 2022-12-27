@@ -5,7 +5,7 @@ const ModalCartes = (props) => {
 
 
     useEffect(() => {
-        gsap.to(".animate", { opacity: 1, duration: 0.5, y: 30, stagger: 0.3, })
+        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3, })
 
     }, [])
     const closeModal = () => {
