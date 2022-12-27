@@ -1,14 +1,23 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import "./css/NavBar.css"
 const NavBar = () => {
     const navigate = useNavigate()
     return (
         <nav>
-            <button onClick={() => { navigate('/') }} >Accueil</button>
-            <button onClick={() => { navigate('/Agents') }}>Agents</button>
-            <button onClick={() => { navigate('/Armes') }}>Armes</button>
-            <button onClick={() => { navigate('/Cartes') }}>Cartes</button>
+            <NavLink to="/">
+                <p>Accueil</p>
+            </NavLink>
+            <NavLink to="/Agents">
+                <p>Agents</p>
+            </NavLink>
+            <NavLink to="/Armes">
+                <p>Armes</p>
+            </NavLink>
+            <NavLink to="/Cartes">
+                <p>Cartes</p>
+            </NavLink>
+
         </nav>
     );
 };

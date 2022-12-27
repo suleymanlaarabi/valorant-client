@@ -3,18 +3,40 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgba(15, 17, 24, 0.725);
 }
-button{
-    height: 50px;
+a{
+    height: 100%;
     width: 100px;
     margin-left: 5px;
     margin-right: 5px;
     cursor: pointer;
     outline: none;
     border: none;
-    border-radius: 10px;
-    background: rgb(219, 219, 219);
+    background: rgba(219, 219, 219, 0);
+    color: white;
+    font-size: 1.1em;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-button:hover{
+a:hover{
     opacity: 0.8;
+        background: rgb(22, 25, 36);
+        border-bottom: solid 2px white;
+}
+
+a:hover p{
+    transform: translateY(1px);
+}
+
+.active{
+    opacity: 0.8;
+        background: rgb(22, 25, 36);
+        border-bottom: solid 2px white;
+}
+
+.active p{
+        transform: translateY(1px);
 }

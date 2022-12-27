@@ -5,8 +5,7 @@
     background: rgba(0, 0, 0, 0.657);
     height: 100vh;
     width: 100vw;
-    z-index: 1500;
-    
+        z-index: 1500;
 }
 
 .Modal{
@@ -18,8 +17,8 @@
         height: 700px;
         width: 850px;
         border-radius: 20px;
-            background: rgb(18, 21, 33);
-        overflow-y: scroll;
+    background: rgb(18, 21, 33);
+            overflow-y: scroll;
         padding: 10px;
 
 }

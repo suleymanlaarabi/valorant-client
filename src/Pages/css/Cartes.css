@@ -1,0 +1,24 @@
+.Cartes {
+    display: flex;
+    flex-wrap: wrap;
+    background: rgb(18, 21, 33);
+}
+
+.Carte {
+
+    width: 50%;
+
+    box-sizing: border-box;
+    background: rgb(18, 21, 33);
+    
+}
+
+.Carte:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.186);
+}
+
+img {
+    width: 100%;
+   transform: translateY(4px);
+}

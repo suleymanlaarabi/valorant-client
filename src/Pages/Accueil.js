@@ -3,7 +3,8 @@ import "./css/Accueil.css"
 const Accueil = () => {
     return (
         <div>
-            <h1>Accueil</h1>
+            <h1>Valorant Client</h1>
+
         </div>
     );
 };
