@@ -18,7 +18,14 @@ const ModalArmes = (props) => {
                     <h3>Time for equip : <span>{props.armeInfo.armeState.equipTimeSeconds}</span></h3>
 
                 </div>
-
+                <div onClick={props.close}>
+                    <button className="btn btn--light">
+                        <span className="btn__inner">
+                            <span className="btn__slide"></span>
+                            <span className="btn__content">Fermer</span>
+                        </span>
+                    </button>
+                </div>
             </div>
         </>
     );

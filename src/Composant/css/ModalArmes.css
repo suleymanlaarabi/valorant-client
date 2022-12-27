@@ -18,7 +18,7 @@
         width: 850px;
         border-radius: 20px;
             background: rgb(18, 21, 33);
-        overflow-y: scroll;
+        overflow-y: hidden;
         padding: 10px;
 
 }

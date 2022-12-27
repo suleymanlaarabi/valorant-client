@@ -13,7 +13,14 @@ const ModalCartes = (props) => {
                 <h1>{props.carteInfo.pseudo}</h1>
                 <img src={props.carteInfo.imageLink} />
 
-
+                <div onClick={props.close}>
+                    <button className="btn btn--light">
+                        <span className="btn__inner">
+                            <span className="btn__slide"></span>
+                            <span className="btn__content">Fermer</span>
+                        </span>
+                    </button>
+                </div>
             </div>
         </>
     );
