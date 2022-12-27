@@ -16,7 +16,7 @@ const Agents = () => {
                     imageLink: data.fullPortraitV2
                 }])
 
-
+                console.log(data)
             })
 
 

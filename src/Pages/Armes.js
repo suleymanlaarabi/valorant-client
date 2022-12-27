@@ -15,6 +15,7 @@ const Armes = () => {
                     armeState: data.weaponStats,
                     imageLink: data.displayIcon
                 }])
+
             })
         })
     }, [])
