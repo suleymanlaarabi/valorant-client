@@ -12,6 +12,9 @@
     background: rgb(18, 21, 33);
     transition: all 0.3s;
     border-radius: 5px;
+    opacity: 0;
+    position: relative;
+    top: -100px;
     
 }
 

@@ -1,8 +1,12 @@
-import React, { useEffect } from 'react';
+import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react';
 import "./css/ModalCartes.css"
 const ModalCartes = (props) => {
+
+
     useEffect(() => {
-        console.log(props.carteInfo.armeState)
+        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.5 })
+
     }, [])
     return (
         <>
@@ -10,10 +14,10 @@ const ModalCartes = (props) => {
 
             </div>
             <div className='Modal'>
-                <h1>{props.carteInfo.pseudo}</h1>
-                <img src={props.carteInfo.imageLink} />
+                <h1 className='animate'>{props.carteInfo.pseudo}</h1>
+                <img className='animate' src={props.carteInfo.imageLink} />
 
-                <div onClick={props.close}>
+                <div className='ModalCloseButton animate' onClick={props.close}>
                     <button className="btn btn--light">
                         <span className="btn__inner">
                             <span className="btn__slide"></span>

@@ -12,6 +12,9 @@
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+    opacity: 0;
+    position: relative;
+    top: -100px;
 }
 
 .Arme:hover {

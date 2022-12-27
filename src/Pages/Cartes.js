@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import gsap from 'gsap';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import ModalCartes from '../Composant/ModalCartes';
 import "./css/Cartes.css"
 const Cartes = () => {
@@ -30,6 +31,11 @@ const Cartes = () => {
     const closeModal = () => {
         setCarteClicked({ ...CarteClicked, isClicked: false })
     }
+
+    useLayoutEffect(() => {
+        gsap.to(".animate", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+    }, [CarteInfo])
+
     return (
         <div>
 
@@ -48,7 +54,7 @@ const Cartes = () => {
                             isClicked: true
 
                         })
-                    }} className='Carte' key={key}>
+                    }} className='Carte animate' key={key}>
                         <h2>{carte.pseudo}</h2>
                         <img src={carte.imageLink} />
                     </div>)

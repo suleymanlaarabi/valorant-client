@@ -25,9 +25,19 @@
 }
 .Modal img{
     width: 350px;
+    opacity: 0;
 
 }
 
 .Modal p {
     font-size: 1.3em;
+    opacity: 0;
+}
+
+h1{
+    opacity: 0;
+}
+
+.ModalCloseButton{
+    opacity: 0;
 }

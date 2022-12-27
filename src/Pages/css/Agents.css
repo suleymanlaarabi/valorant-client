@@ -7,9 +7,12 @@
 .Agent{
  
     width: 33.33%;
-   
+   opacity: 0;
     box-sizing: border-box;
     background: rgb(18, 21, 33);
+    position: relative;
+    top:-100px;
+    
 }
 
 .Agent:hover{
