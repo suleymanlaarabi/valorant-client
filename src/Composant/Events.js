@@ -14,7 +14,6 @@ const Events = () => {
                     endTime: event.endTime
                 }])
             })
-            console.log(res.data.data)
         })
 
     }, [])

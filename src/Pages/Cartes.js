@@ -13,7 +13,6 @@ const Cartes = () => {
     useEffect(() => {
         setCarteInfo([])
         axios.get('https://valorant-api.com/v1/maps?language=fr-FR').then(res => {
-            console.log(res.data)
             res.data.data.map((data) => {
                 setCarteInfo(current => [...current, {
                     pseudo: data.displayName,
