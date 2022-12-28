@@ -18,7 +18,7 @@ const AgentInfo = () => {
 
     useEffect(() => {
 
-        axios.get("https://valorant-api.com/v1/agents/" + uuid).then((res) => {
+        axios.get("https://valorant-api.com/v1/agents/" + uuid + "?language=fr-FR").then((res) => {
             var data = res.data.data
             setAgentInfo({
                 pseudo: data.displayName,
@@ -45,12 +45,12 @@ const AgentInfo = () => {
             <img className='AgentImage animateAgentInfo' src={AgentInfo.imageLink} alt="Aucune Image" />
             <p className='animateAgentInfo'>{AgentInfo.description}</p>
 
-            <h4 className='animateAgentInfo'>Developer Name : {AgentInfo.developerName}</h4>
-            <h4 className='animateAgentInfo'>Abilities : {AgentInfo.abilities.map((abilities, key) => {
+            <h4 className='animateAgentInfo'>Nom du Developpeur : {AgentInfo.developerName}</h4>
+            <h4 className='animateAgentInfo'>Capacité : {AgentInfo.abilities.map((abilities, key) => {
                 return <span key={key}>{abilities.displayName} , </span>
             })}</h4>
             <h4 className='animateAgentInfo'>Role : {AgentInfo.role}</h4>
-            <h4 className='animateAgentInfo'>Role Description : {AgentInfo.roleDescription}</h4>
+            <h4 className='animateAgentInfo'>Description du Role : {AgentInfo.roleDescription}</h4>
 
 
         </div>

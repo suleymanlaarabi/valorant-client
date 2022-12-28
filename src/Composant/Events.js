@@ -7,13 +7,14 @@ const Events = () => {
     const [EventInfo, setEventInfo] = useState([])
     useEffect(() => {
         setEventInfo([])
-        axios.get("https://valorant-api.com/v1/events").then(res => {
+        axios.get("https://valorant-api.com/v1/events?language=fr-FR").then(res => {
             res.data.data.map((event) => {
                 setEventInfo(current => [...current, {
                     pseudo: event.displayName,
                     endTime: event.endTime
                 }])
             })
+            console.log(res.data.data)
         })
 
     }, [])

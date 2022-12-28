@@ -7,8 +7,8 @@ const Agents = () => {
     const [AgentInfo, setAgentInfo] = useState([])
     useEffect(() => {
         setAgentInfo([])
-        axios.get('https://valorant-api.com/v1/agents?isPlayableCharacter=true').then(res => {
-
+        axios.get('https://valorant-api.com/v1/agents?language=fr-FR&isPlayableCharacter=true').then(res => {
+            console.log(res)
             res.data.data.map((data) => {
                 setAgentInfo(current => [...current, {
                     pseudo: data.displayName,

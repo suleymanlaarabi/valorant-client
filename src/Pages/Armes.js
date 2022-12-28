@@ -8,7 +8,7 @@ const Armes = () => {
 
     useEffect(() => {
         setArmesInfo([])
-        axios.get('https://valorant-api.com/v1/weapons').then(res => {
+        axios.get('https://valorant-api.com/v1/weapons?language=fr-FR').then(res => {
             res.data.data.map((data) => {
                 setArmesInfo(current => [...current, {
                     pseudo: data.displayName,
