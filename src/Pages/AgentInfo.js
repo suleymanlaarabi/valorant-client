@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import gsap from 'gsap';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import "./css/AgentInfo.css"
 const AgentInfo = () => {
@@ -34,19 +35,24 @@ const AgentInfo = () => {
         })
     }, [])
 
+    useLayoutEffect(() => {
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.4, stagger: 0.3, })
+
+    }, [AgentInfo])
+
     return (
         <div className='AgentInfo'>
-            <h2 >Agent Info</h2 >
-            <h3>{AgentInfo.pseudo}</h3>
-            <img className='AgentImage' src={AgentInfo.imageLink} alt="Aucune Image" />
-            <p>{AgentInfo.description}</p>
+            <h2 className='animateAgentInfo' >Agent Info</h2 >
+            <h3 className='animateAgentInfo'>{AgentInfo.pseudo}</h3>
+            <img className='AgentImage animateAgentInfo' src={AgentInfo.imageLink} alt="Aucune Image" />
+            <p className='animateAgentInfo'>{AgentInfo.description}</p>
 
-            <h4>Developer Name : {AgentInfo.developerName}</h4>
-            <h4>Abilities : {AgentInfo.abilities.map((abilities, key) => {
+            <h4 className='animateAgentInfo'>Developer Name : {AgentInfo.developerName}</h4>
+            <h4 className='animateAgentInfo'>Abilities : {AgentInfo.abilities.map((abilities, key) => {
                 return <span key={key}>{abilities.displayName} , </span>
             })}</h4>
-            <h4>Role : {AgentInfo.role}</h4>
-            <h4>Role Description : {AgentInfo.roleDescription}</h4>
+            <h4 className='animateAgentInfo'>Role : {AgentInfo.role}</h4>
+            <h4 className='animateAgentInfo'>Role Description : {AgentInfo.roleDescription}</h4>
 
 
         </div>
