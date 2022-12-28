@@ -1,7 +1,7 @@
 <p align="center">
   <a href="#">
     <img src="./valorantBanner.png" height="90%">
-    <h1 align="center">Valorant Client🎵</h1>
+    <h1 align="center">Valorant Client</h1>
   </a>
 </p>
 
