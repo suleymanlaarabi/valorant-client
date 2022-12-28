@@ -11,7 +11,12 @@ const Cartes = () => {
         regions: []
     }])
     useEffect(() => {
-        setCarteInfo([])
+        setCarteInfo([{
+            pseudo: "",
+            imageLink: "",
+            mapImageLink: "",
+            regions: []
+        }])
         axios.get('https://valorant-api.com/v1/maps?language=fr-FR').then(res => {
             res.data.data.map((data) => {
                 setCarteInfo(current => [...current, {
