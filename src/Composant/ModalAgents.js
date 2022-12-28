@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./css/ModalAgents.css"
 const ModalAgents = (props) => {
 
@@ -16,6 +17,7 @@ const ModalAgents = (props) => {
 
 
     }
+    const navigate = useNavigate()
     return (
         <>
             <div onClick={closeModal} className='BackgroundModal'>
@@ -25,14 +27,27 @@ const ModalAgents = (props) => {
                 <h1 className='animate' >{props.agentInfo.pseudo}</h1>
                 <img className='animate' src={props.agentInfo.imageLink} />
                 <p className='animate' >{props.agentInfo.description}</p>
-                <div className='ModalCloseButton animate' onClick={closeModal}>
-                    <button className="btn btn--light">
-                        <span className="btn__inner">
-                            <span className="btn__slide"></span>
-                            <span className="btn__content">Fermer</span>
-                        </span>
-                    </button>
+                <div className='Buttons'>
+                    <div className='ModalCloseButton animate' onClick={closeModal}>
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">Fermer</span>
+                            </span>
+                        </button>
+
+                    </div>
+                    <div className='ModalCloseButton animate' onClick={() => { navigate("/AgentInfo/" + props.agentInfo.uuid) }}>
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">Plus d'info</span>
+                            </span>
+                        </button>
+
+                    </div>
                 </div>
+
             </div>
 
         </>

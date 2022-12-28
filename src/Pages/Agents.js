@@ -9,14 +9,16 @@ const Agents = () => {
 
         setAgentInfo([])
         axios.get('https://valorant-api.com/v1/agents?isPlayableCharacter=true').then(res => {
+
             res.data.data.map((data) => {
                 setAgentInfo(current => [...current, {
                     pseudo: data.displayName,
                     description: data.description,
-                    imageLink: data.fullPortraitV2
+                    imageLink: data.fullPortraitV2,
+                    uuid: data.uuid
                 }])
 
-                console.log(data)
+
             })
 
 
@@ -40,6 +42,7 @@ const Agents = () => {
         pseudo: "",
         imageLink: "",
         description: "",
+        uuid: "",
 
         isClicked: false
     })
@@ -62,13 +65,15 @@ const Agents = () => {
             <div className='Agents '>
                 {AgentInfo.map((agent, key) => {
 
+
                     return (<div className='Agent animate' onClick={() => {
                         setAgentClicked({
                             ...AgentClicked,
                             pseudo: agent.pseudo,
                             imageLink: agent.imageLink,
                             description: agent.description,
-                            isClicked: true
+                            isClicked: true,
+                            uuid: agent.uuid
 
                         })
                     }} key={key}>

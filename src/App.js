@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './Composant/Footer';
 import NavBar from './Composant/NavBar';
 import Accueil from './Pages/Accueil';
+import AgentInfo from './Pages/AgentInfo';
 import Agents from './Pages/Agents';
 import Armes from './Pages/Armes';
 import Cartes from './Pages/Cartes';
@@ -18,6 +19,7 @@ function App() {
             <Route path='/Agents' element={<Agents />} />
             <Route path='/Armes' element={<Armes />} />
             <Route path='/Cartes' element={<Cartes />} />
+            <Route path='/AgentInfo/:uuid' element={<AgentInfo />} />
 
           </Routes>
           <Footer />

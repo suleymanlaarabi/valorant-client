@@ -10,6 +10,11 @@
     
 }
 
+.Buttons{
+    display: flex;
+    justify-content: center;
+}
+
 .Modal{
     position: fixed;
     top: 50%;
@@ -42,6 +47,8 @@ h1{
 
 .ModalCloseButton{
     opacity: 0;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 @keyframes opacity {
