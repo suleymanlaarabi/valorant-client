@@ -21,8 +21,6 @@
 
 **Other ? tell me**
 
-**🎨 Styled Only in Css with easy to customize colors**
-
 ## Built With
 
 This project was built using these technologies.
