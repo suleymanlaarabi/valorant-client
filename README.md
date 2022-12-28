@@ -1,5 +1,7 @@
 # Valorant Client
 
+    <img src="./valorantBanner.png" height="128">
+
 A simple valorant client to know everything about the game
 
 # Getting Started with Create React App

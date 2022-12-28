@@ -6,7 +6,6 @@ import "./css/Agents.css"
 const Agents = () => {
     const [AgentInfo, setAgentInfo] = useState([])
     useEffect(() => {
-
         setAgentInfo([])
         axios.get('https://valorant-api.com/v1/agents?isPlayableCharacter=true').then(res => {
 

@@ -20,10 +20,9 @@ const AgentInfo = () => {
 
         axios.get("https://valorant-api.com/v1/agents/" + uuid).then((res) => {
             var data = res.data.data
-            console.log(data)
             setAgentInfo({
                 pseudo: data.displayName,
-                imageLink: data.fullPortrait,
+                imageLink: data.fullPortraitV2,
                 description: data.description,
                 developerName: data.developerName,
                 abilities: data.abilities,
@@ -31,7 +30,6 @@ const AgentInfo = () => {
                 roleDescription: data.role.description
 
             })
-            console.log(data.abilities)
         })
     }, [])
 
