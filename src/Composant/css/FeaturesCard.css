@@ -19,8 +19,9 @@
     height:270px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    padding: 5px;
+    padding: 10px;
     border-radius: 20px;
     border: solid 3px rgba(255, 255, 255, 0.021);
     transition: all 0.3s;
@@ -35,6 +36,6 @@
 
 .featuresCard:hover{
     border: solid 3px white;
-
+padding: 30px;
    cursor: pointer;
 }
