@@ -64,7 +64,7 @@ const Cartes = () => {
                             ...CarteClicked,
                             pseudo: carte.pseudo,
                             imageLink: carte.mapImageLink,
-                            regions: carte.regions,
+                            regions: carte.regions ? carte.regions : [],
                             isClicked: true
 
                         })
