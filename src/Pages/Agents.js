@@ -29,7 +29,11 @@ const Agents = () => {
 
 
     useLayoutEffect(() => {
-        gsap.to(".animate", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+        gsap.to(".title", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 }).then(() => {
+            gsap.to(".animate", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+
+        })
+
     }, [AgentInfo])
 
     const [AgentClicked, setAgentClicked] = useState({
@@ -45,10 +49,7 @@ const Agents = () => {
     }
 
 
-    const gsapAnim = () => {
-        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.5, y: 30 })
 
-    }
 
 
     return (

@@ -1,5 +1,8 @@
 .title{
     font-size: 3em;
+    opacity: 0;
+    position: relative;
+    top: -100px;
 }
 .Agents{
     display: flex;

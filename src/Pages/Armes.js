@@ -34,14 +34,17 @@ const Armes = () => {
         setArmeClicked({ ...ArmeClicked, isClicked: false })
     }
     useLayoutEffect(() => {
-        gsap.to(".animate", { opacity: 1, duration: 0.4, stagger: 0.2, y: 100 })
+        gsap.to(".title", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 }).then(() => {
+            gsap.to(".animate", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+
+        })
     }, [ArmesInfo])
     return (
         <div>
             {ArmeClicked.isClicked &&
                 <ModalArmes armeInfo={ArmeClicked} close={closeModal} />}
 
-            <h2>Armes</h2>
+            <h2 className='title'>Armes</h2>
             <div className='Armes'>
 
                 {ArmesInfo.map((arme, key) => {

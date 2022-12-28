@@ -32,7 +32,10 @@ const Cartes = () => {
 
     useLayoutEffect(() => {
 
-        gsap.to(".animate", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+        gsap.to(".title", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 }).then(() => {
+            gsap.to(".animate", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+
+        })
     }, [CarteInfo])
 
     return (
@@ -41,7 +44,7 @@ const Cartes = () => {
             {CarteClicked.isClicked &&
                 <ModalCartes carteInfo={CarteClicked} close={closeModal} />}
 
-            <h2>Cartes</h2>
+            <h2 className='title'>Cartes</h2>
             <div className='Cartes'>
                 {CarteInfo.map((carte, key) => {
                     return (<div onClick={() => {
