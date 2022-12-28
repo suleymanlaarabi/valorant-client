@@ -6,7 +6,6 @@ const ModalCartes = (props) => {
 
     useEffect(() => {
         gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3, })
-
     }, [])
     const closeModal = () => {
         gsap.to(".Modal", { opacity: 0, duration: 0.3, y: 200, x: 200, scale: 0.6 }).then(() => {
@@ -25,6 +24,11 @@ const ModalCartes = (props) => {
                 <h1 className='animate'>{props.carteInfo.pseudo}</h1>
                 <img className='animate' src={props.carteInfo.imageLink} />
 
+
+                <h3>Regions</h3>
+                <div className='Regions'> {props.carteInfo.regions.map((res, key) => {
+                    return <h5 key={key}> {res.regionName}, </h5>
+                })}</div>
                 <div className='ModalCloseButton animate' onClick={closeModal}>
                     <button className="btn btn--light">
                         <span className="btn__inner">

@@ -4,7 +4,12 @@ import React, { useEffect, useLayoutEffect, useState } from 'react';
 import ModalCartes from '../Composant/ModalCartes';
 import "./css/Cartes.css"
 const Cartes = () => {
-    const [CarteInfo, setCarteInfo] = useState([])
+    const [CarteInfo, setCarteInfo] = useState([{
+        pseudo: "",
+        imageLink: "",
+        mapImageLink: "",
+        regions: []
+    }])
     useEffect(() => {
         setCarteInfo([])
         axios.get('https://valorant-api.com/v1/maps').then(res => {
@@ -12,7 +17,9 @@ const Cartes = () => {
                 setCarteInfo(current => [...current, {
                     pseudo: data.displayName,
                     imageLink: data.splash,
-                    mapImageLink: data.displayIcon
+                    mapImageLink: data.displayIcon,
+                    regions: data.callouts
+
                 }])
             })
         })
@@ -21,7 +28,7 @@ const Cartes = () => {
     const [CarteClicked, setCarteClicked] = useState({
         pseudo: "",
         imageLink: "",
-
+        regions: [],
 
         isClicked: false
     })
@@ -52,7 +59,7 @@ const Cartes = () => {
                             ...CarteClicked,
                             pseudo: carte.pseudo,
                             imageLink: carte.mapImageLink,
-
+                            regions: carte.regions,
                             isClicked: true
 
                         })

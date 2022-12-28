@@ -9,6 +9,31 @@
 
 # A simple valorant client to know everything about the game
 
+## Features
+
+**📖 Multi-Page Layout**
+
+**🎨 Styled Only in Css with easy to customize colors**
+
+## Known issue
+
+**📱 No Responsive**
+
+**Other ? tell me**
+
+**🎨 Styled Only in Css with easy to customize colors**
+
+## Built With
+
+This project was built using these technologies.
+
+- React.js
+- Node.js
+- CSS3
+- VsCode
+- Gsap
+- Mui Icon
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -80,4 +105,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-# valorant-client
+### Show your support
+
+Give a ⭐ if you like this website!
