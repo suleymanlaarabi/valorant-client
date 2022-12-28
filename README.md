@@ -1,8 +1,13 @@
-# Valorant Client
-
+<p align="center">
+  <a href="#">
     <img src="./valorantBanner.png" height="128">
+    <h1 align="center">Valorant Client🎵</h1>
+  </a>
+</p>
 
-A simple valorant client to know everything about the game
+---
+
+# A simple valorant client to know everything about the game
 
 # Getting Started with Create React App
 
