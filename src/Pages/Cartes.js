@@ -11,12 +11,7 @@ const Cartes = () => {
         regions: []
     }])
     useEffect(() => {
-        setCarteInfo([{
-            pseudo: "",
-            imageLink: "",
-            mapImageLink: "",
-            regions: []
-        }])
+        setCarteInfo([])
         axios.get('https://valorant-api.com/v1/maps?language=fr-FR').then(res => {
             res.data.data.map((data) => {
                 setCarteInfo(current => [...current, {
@@ -27,6 +22,7 @@ const Cartes = () => {
 
                 }])
             })
+            console.log(res.data)
         })
     }, [])
 
@@ -64,7 +60,7 @@ const Cartes = () => {
                             ...CarteClicked,
                             pseudo: carte.pseudo,
                             imageLink: carte.mapImageLink,
-                            regions: carte.regions ? carte.regions : [],
+                            regions: carte.regions ? carte.regions : [{ regionName: "Aucune Regions Enregistrer Revenez plus tard" }],
                             isClicked: true
 
                         })
