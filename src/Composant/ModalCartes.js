@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import "./css/ModalCartes.css";
 const ModalCartes = (props) => {
     useEffect(() => {
@@ -18,10 +18,10 @@ const ModalCartes = (props) => {
             <div onClick={closeModal} className="BackgroundModal"></div>
             <div className="Modal">
                 <h1 className="animate">{props.carteInfo.pseudo}</h1>
-                <img className="animate" src={props.carteInfo.imageLink} />
+                <img alt="Comming Soon" className="animate" src={props.carteInfo.imageLink} />
 
-                <h3>Regions</h3>
-                <div className="Regions">
+                <h3 className="animate">Regions</h3>
+                <div className="Regions animate">
                     {" "}
                     {props.carteInfo.regions.map((res, key) => {
                         return <h5 key={key}> {res.regionName}, </h5>;

@@ -30,7 +30,7 @@ const AgentInfo = () => {
                     roleDescription: data.role.description,
                 });
             });
-    }, []);
+    }, [uuid]);
 
     useLayoutEffect(() => {
         gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.4, stagger: 0.3 });
@@ -43,7 +43,7 @@ const AgentInfo = () => {
             <img
                 className="AgentImage animateAgentInfo"
                 src={AgentInfo.imageLink}
-                alt="Aucune Image"
+                alt="Comming Soon"
             />
             <p className="animateAgentInfo">{AgentInfo.description}</p>
 

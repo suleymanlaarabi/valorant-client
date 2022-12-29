@@ -20,6 +20,7 @@ const Armes = () => {
                             imageLink: data.displayIcon,
                         },
                     ]);
+                    return 0
                 });
             });
     }, []);
@@ -71,7 +72,7 @@ const Armes = () => {
                             key={key}
                         >
                             <h2>{arme.pseudo}</h2>
-                            <img className="imgArme" src={arme.imageLink} />
+                            <img className="imgArme" src={arme.imageLink} alt="Comming Soon" />
                         </div>
                     );
                 })}

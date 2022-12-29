@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/ModalAgents.css";
 const ModalAgents = (props) => {
@@ -20,7 +20,7 @@ const ModalAgents = (props) => {
             <div onClick={closeModal} className="BackgroundModal"></div>
             <div className="Modal">
                 <h1 className="animate">{props.agentInfo.pseudo}</h1>
-                <img className="animate" src={props.agentInfo.imageLink} />
+                <img alt="Comming Soon" className="animate" src={props.agentInfo.imageLink} />
                 <p className="animate">{props.agentInfo.description}</p>
                 <div className="Buttons">
                     <div className="ModalCloseButton animate" onClick={closeModal}>

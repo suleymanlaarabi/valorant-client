@@ -1,7 +1,6 @@
 import axios from "axios";
 import gsap from "gsap";
 import React, {
-    useCallback,
     useEffect,
     useLayoutEffect,
     useState,
@@ -27,6 +26,7 @@ const Agents = () => {
                             uuid: data.uuid,
                         },
                     ]);
+                    return 0
                 });
             });
     }, []);
@@ -82,7 +82,7 @@ const Agents = () => {
                             key={key}
                         >
                             <h2>{agent.pseudo}</h2>
-                            <img src={agent.imageLink} />
+                            <img src={agent.imageLink} alt="Comming Soon" />
                         </div>
                     );
                 })}

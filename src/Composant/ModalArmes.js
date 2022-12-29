@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import "./css/ModalArmes.css";
 const ModalArmes = (props) => {
     useEffect(() => {
@@ -18,7 +18,7 @@ const ModalArmes = (props) => {
             <div onClick={closeModal} className="BackgroundModal"></div>
             <div className="Modal">
                 <h1 className="animate">{props.armeInfo.pseudo}</h1>
-                <img className="animate" src={props.armeInfo.imageLink} />
+                <img alt="Comming Soon" className="animate" src={props.armeInfo.imageLink} />
                 <div className="paragrapheRef animate">
                     <h3>
                         Ratio de tire : <span>{props.armeInfo.armeState.fireRate}</span>

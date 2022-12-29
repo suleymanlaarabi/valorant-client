@@ -51,6 +51,12 @@ margin-bottom: 50px;
     flex-wrap: wrap;
     text-align: center;
     justify-content: center;
+    
+}
+.animate{
+    position: relative;
+    opacity: 0;
+    
 }
 
 .Regions h5{

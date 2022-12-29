@@ -25,6 +25,7 @@ const Cartes = () => {
                         regions: data.callouts,
                     },
                 ]);
+                return 0
             });
             console.log(res.data);
         });
@@ -86,7 +87,7 @@ const Cartes = () => {
                             key={key}
                         >
                             <h2>{carte.pseudo}</h2>
-                            <img src={carte.imageLink} />
+                            <img src={carte.imageLink} alt="Comming soon" />
                         </div>
                     );
                 })}

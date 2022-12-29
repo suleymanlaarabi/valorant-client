@@ -7,13 +7,12 @@ import MapIcon from "@mui/icons-material/Map";
 import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
 import Events from "../Composant/Events";
 import gsap from "gsap";
-import { AnimationOnScroll } from "react-animation-on-scroll";
 
 const Accueil = () => {
     const navigate = useNavigate();
     const FeaturesCardRef = useRef();
     const [FeaturesCardIsVisible, setFeaturesCardIsVisible] = useState(false);
-    if (FeaturesCardIsVisible == true) {
+    if (FeaturesCardIsVisible === true) {
         gsap.to(".featuresCard", {
             opacity: 1,
             duration: 0.4,
