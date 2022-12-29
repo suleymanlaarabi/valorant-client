@@ -26,7 +26,8 @@
 
 .Arme:hover {
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.066);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
 }
 .Arme:hover img {
     transform: scale(1) ;
