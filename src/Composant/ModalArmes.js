@@ -32,7 +32,7 @@ const ModalArmes = (props) => {
                         <span>{props.armeInfo.armeState.equipTimeSeconds}</span>
                     </h3>
                 </div>
-                <div className="ModalCloseButton animate" onClick={closeModal}>
+                <div className="animate ModalCloseButton" onClick={closeModal}>
                     <button className="btn btn--light">
                         <span className="btn__inner">
                             <span className="btn__slide"></span>

@@ -10,10 +10,15 @@
     padding: 200px;
     padding-top: 0;
     padding-bottom: 30px;
+    min-height: 900px;
     
 }
 .animateAgentInfo{
     opacity: 0;
     
  
+}
+.animateAgentInfo{
+    position: relative;
+    transform: translateY(-100px);
 }

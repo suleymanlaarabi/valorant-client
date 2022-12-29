@@ -44,6 +44,8 @@ h1{
 }
 .ModalCloseButton {
     opacity: 0;
+
+    
 }
 
 @keyframes opacity {

@@ -33,7 +33,7 @@ const AgentInfo = () => {
     }, [uuid]);
 
     useLayoutEffect(() => {
-        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.4, stagger: 0.3 });
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.4, stagger: 0.3, top: 100 });
     }, [AgentInfo]);
 
     return (

@@ -9,6 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     background: rgb(18, 21, 33);
+    min-height: 900px;
 }
 
 .Arme {
