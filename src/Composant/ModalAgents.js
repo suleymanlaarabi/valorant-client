@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import "./css/ModalAgents.css";
 const ModalAgents = (props) => {
-    const { addFavoris, setNotify } = useContext(UserContext)
+    const { addFavoris, setNotify, removeFavoris } = useContext(UserContext)
     useEffect(() => {
         gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3 });
     }, []);
@@ -19,11 +19,24 @@ const ModalAgents = (props) => {
     const navigate = useNavigate();
     const addFavorisAgent = async () => {
         try {
-            await addFavoris(props.agentInfo.pseudo, props.agentInfo.description, props.agentInfo.imageLink)
+            await addFavoris(props.agentInfo.pseudo, props.agentInfo.description, props.agentInfo.imageLink, props.agentInfo.uuid)
             setNotify({
                 isTrue: true,
                 text: "Ajouter aux favoris"
             })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const removeFavorisAgent = async () => {
+        try {
+            await removeFavoris(props.agentInfo.uuid)
+            setNotify({
+                isTrue: true,
+                text: "Supprimer des favoris"
+            })
+            props.setFavorisState()
+            props.close()
         } catch (err) {
             console.log(err)
         }
@@ -58,7 +71,7 @@ const ModalAgents = (props) => {
                         </button>
 
                     </div>
-                    <div
+                    {!props.agentInfo.isFavoris && <div
                         className="ModalCloseButton animate"
                         onClick={addFavorisAgent}
                     >
@@ -69,7 +82,21 @@ const ModalAgents = (props) => {
                             </span>
                         </button>
 
-                    </div>
+                    </div>}
+
+                    {props.agentInfo.isFavoris && <div
+                        className="ModalCloseButton animate"
+                        onClick={removeFavorisAgent}
+                    >
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">supprimer des favoris</span>
+                            </span>
+                        </button>
+
+                    </div>}
+
                 </div>
             </div>
         </>

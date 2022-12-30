@@ -50,6 +50,7 @@ const Agents = () => {
         description: "",
         uuid: "",
         isClicked: false,
+        isFavoris: false
     });
 
     const closeModal = () => {
@@ -77,6 +78,7 @@ const Agents = () => {
                                     description: agent.description,
                                     isClicked: true,
                                     uuid: agent.uuid,
+                                    isFavoris: false
                                 });
                             }}
                             key={key}

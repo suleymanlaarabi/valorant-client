@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { auth, db } from "../firebase-config";
 import Loader from "../Composant/Loader"
 import Toast from "../Composant/Toast";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
 export const UserContext = createContext()
 
 
@@ -18,6 +18,9 @@ export function UserContextProvider(props) {
 
     const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
     const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
+
+
+
     const updateProfilePseudo = (pseudo) => {
         if (pseudo !== "" || null || undefined) {
             updateProfile(currentUser, {
@@ -26,13 +29,24 @@ export function UserContextProvider(props) {
         }
     }
 
-    const addFavoris = async (pseudo, description, imageLink) => {
+    const addFavoris = async (pseudo, description, imageLink, uuid) => {
         try {
-            const cred = await addDoc(collection(db, currentUser.email), {
+            const cred = await setDoc(doc(db, currentUser.email, uuid), {
                 pseudo: pseudo,
                 description: description,
-                imageLink: imageLink
+                imageLink: imageLink,
+                uuid: uuid
             })
+            console.log(cred)
+        } catch (err) {
+
+        }
+
+    }
+
+    const removeFavoris = async (uuid) => {
+        try {
+            const cred = await deleteDoc(doc(db, currentUser.email, uuid))
             console.log(cred)
         } catch (err) {
 
@@ -61,7 +75,7 @@ export function UserContextProvider(props) {
         return unsubscribe;
     }, [])
     return (
-        <UserContext.Provider value={{ signIn, signUp, currentUser, updateProfilePseudo, setNotify, addFavoris, getFavoris }}>
+        <UserContext.Provider value={{ signIn, signUp, currentUser, updateProfilePseudo, setNotify, addFavoris, getFavoris, removeFavoris }}>
             <Toast notify={notify} setNotify={setNotify} />
             {!loadingData ? props.children : <Loader />}
         </UserContext.Provider>

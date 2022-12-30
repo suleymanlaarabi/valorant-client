@@ -1,6 +1,7 @@
 import axios from 'axios';
 import gsap from 'gsap';
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import ModalAgents from '../../Composant/ModalAgents';
 import { UserContext } from '../../Context/userContext';
 const Favoris = () => {
     const { getFavoris } = useContext(UserContext)
@@ -31,11 +32,26 @@ const Favoris = () => {
             });
     }, [AgentFavoris])
 
+    const [AgentClicked, setAgentClicked] = useState({
+        pseudo: "",
+        imageLink: "",
+        description: "",
+        uuid: "",
+        isClicked: false,
+        isFavoris: true
+    });
 
+    const closeModal = () => {
+        setAgentClicked({ ...AgentClicked, isClicked: false });
+
+    };
 
 
     return (
         <div >
+            {AgentClicked.isClicked && (
+                <ModalAgents setFavorisState={setFavorisState} agentInfo={AgentClicked} close={closeModal} />
+            )}
             <h2>Favoris</h2>
             <div>
                 {AgentFavoris[0] ?
@@ -44,7 +60,17 @@ const Favoris = () => {
                             return (
                                 <div
                                     className="Agent animate"
-
+                                    onClick={() => {
+                                        setAgentClicked({
+                                            ...AgentClicked,
+                                            pseudo: agent.pseudo,
+                                            imageLink: agent.imageLink,
+                                            description: agent.description,
+                                            isClicked: true,
+                                            uuid: agent.uuid,
+                                            isFavoris: true
+                                        });
+                                    }}
                                 >
                                     <h2>{agent.pseudo}</h2>
                                     <img src={agent.imageLink} alt="Comming Soon" />
