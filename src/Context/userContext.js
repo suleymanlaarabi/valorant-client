@@ -28,7 +28,7 @@ export function UserContextProvider(props) {
 
     const addFavoris = async (pseudo, description, imageLink) => {
         try {
-            const cred = await addDoc(collection(db, currentUser.displayName), {
+            const cred = await addDoc(collection(db, currentUser.email), {
                 pseudo: pseudo,
                 description: description,
                 imageLink: imageLink
@@ -41,7 +41,7 @@ export function UserContextProvider(props) {
     }
 
     const getFavoris = async () => {
-        const querySnapshot = await getDocs(collection(db, currentUser.displayName));
+        const querySnapshot = await getDocs(collection(db, currentUser.email));
         var favoris = []
         querySnapshot.forEach((doc) => {
 
