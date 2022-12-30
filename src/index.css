@@ -37,3 +37,7 @@ code {
   background: rgba(255, 255, 255, 0.064);
 
 }
+
+.btn {
+  margin-bottom: 0;
+}

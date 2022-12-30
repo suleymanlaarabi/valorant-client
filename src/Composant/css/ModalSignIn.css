@@ -1,0 +1,54 @@
+.BackgroundModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.657);
+    height: 100vh;
+    width: 100vw;
+        z-index: 1500;
+                animation: opacity 0.4s;
+}
+
+.Modal{
+    position: fixed;
+    top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2000;
+        height: 700px;
+        width: 850px;
+        border-radius: 20px;
+    background: rgb(18, 21, 33);
+            overflow-y: hidden;
+        padding: 10px;
+                animation: startModal 0.3s;
+
+}
+.Modal img{
+    width: 250px;
+margin-bottom: 50px;
+}
+
+.Modal p {
+    font-size: 1.3em;
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+}
+
+@keyframes startModal {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+}
+
+
+.animate{
+    position: relative;
+    opacity: 0;
+    
+}

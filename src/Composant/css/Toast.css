@@ -1,0 +1,13 @@
+.Toast{
+    position: fixed;
+    top: 150px;
+    left: -340px;
+    height: 80px;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.027);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 3px #ff4655;
+}

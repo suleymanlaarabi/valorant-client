@@ -5,6 +5,13 @@ nav{
     align-items: center;
     background: rgba(15, 17, 24, 0.725);
     z-index: 15;
+  
+}
+
+.LinkNav{
+    display: flex;
+    height: 99%;
+    
 }
 a{
     height: 100%;
@@ -21,8 +28,7 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-        top: -100px;
+    
         transition: all 0.3s;
                 border-bottom: solid 2px rgba(255, 255, 255, 0);
 }
@@ -48,12 +54,31 @@ a:hover{
 
 .logo{
     width: 120px;
+    height: 120px;
     position: absolute;
-    left: 0px;
-    top: -105.5px;
-    opacity: 0;
+    left: 0;
+    top: -120px;
 
 }
 .buttonAnim{
     opacity: 0;
+    position: relative;
+        top: -100px;
+      
+}
+.SignButton{
+    display: flex;
+height: 120px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+   
+   
+}
+
+.button{
+    margin-left: 10px;
+    margin-right: 10px;
+    
 }

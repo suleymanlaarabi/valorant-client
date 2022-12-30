@@ -26,13 +26,24 @@ const Accueil = () => {
             setFeaturesCardIsVisible(entry.isIntersecting);
         });
         observer.observe(FeaturesCardRef.current);
+        gsap.to(".logo", { opacity: 1, duration: 0.4, y: 120 }).then(() => {
+            gsap.to(".heroBanner", { opacity: 1, duration: 0.4, y: 200 }).then(() => {
+                gsap.to(".ValorantTitle", {
+                    opacity: 1,
+                    duration: 0.4,
+                    stagger: 0.3,
+                    y: 70,
+                });
+            });
+        });
     }, []);
 
     return (
         <div className="Accueil">
+
             <div className="heroBanner">
                 <div className="contain">
-                    <svg
+                    <svg id="SVGvalo"
                         className="ValorantTitle"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 690 98.9"
