@@ -38,7 +38,7 @@ function App() {
         </BrowserRouter>
       </div>
       <div className="AppMobile">
-        Ce site a besoin d'une largeur d'ecran superieur a 950pixel
+        Ce site a besoin d'une largeur d'ecran superieur a 1450pixel
         <br />
         <p>
           si vous ete sur ordi aggrandisez la fenetre sinon consulter le site

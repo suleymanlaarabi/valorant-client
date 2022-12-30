@@ -52,16 +52,16 @@ const NavBar = () => {
 
             <img className="logo" src={logo} alt="" />
             <div className="LinkNav">
-                <NavLink onClick={GsapRestart} className="buttonAnim" to="/">
+                <NavLink onClick={GsapRestart} className="buttonAnim link" to="/">
                     Accueil
                 </NavLink>
-                <NavLink className="buttonAnim" to="/Agents">
+                <NavLink className="buttonAnim link" to="/Agents">
                     Agents
                 </NavLink>
-                <NavLink className="buttonAnim" to="/Armes">
+                <NavLink className="buttonAnim link" to="/Armes">
                     Armes
                 </NavLink>
-                <NavLink className="buttonAnim" to="/Cartes">
+                <NavLink className="buttonAnim link" to="/Cartes">
                     Cartes
                 </NavLink>
             </div>

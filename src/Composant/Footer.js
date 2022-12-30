@@ -6,7 +6,10 @@ const Footer = () => {
         <footer className='footer'>
             <h3>Copyright © Suleyman Laarabi 2022</h3>
             <br />
-            <GitHubIcon className='iconFooter' sx={{ fontSize: 50 }} />
+            <a href="https://github.com/suleymanlaarabidev/valorant-client">
+                <GitHubIcon id='iconFooter' />
+            </a>
+
         </footer>
     );
 };
