@@ -1,8 +1,8 @@
-import axios from 'axios';
 import gsap from 'gsap';
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import ModalAgents from '../../Composant/ModalAgents';
 import { UserContext } from '../../Context/userContext';
+import "../css/Favoris.css"
 const Favoris = () => {
     const { getFavoris } = useContext(UserContext)
     const [AgentFavoris, setAgentFavoris] = useState([])
@@ -48,12 +48,12 @@ const Favoris = () => {
 
 
     return (
-        <div >
+        <div className="AgentsPage" >
             {AgentClicked.isClicked && (
                 <ModalAgents setFavorisState={setFavorisState} agentInfo={AgentClicked} close={closeModal} />
             )}
             <h2>Favoris</h2>
-            <div>
+            <div className="minHeightFavoris">
                 {AgentFavoris[0] ?
                     <div className="Agents ">
                         <> {AgentFavoris.map((agent, key) => {

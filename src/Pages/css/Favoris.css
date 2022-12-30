@@ -1,0 +1,3 @@
+.minHeightFavoris{
+    min-height: calc(100vh - 408px);
+}
