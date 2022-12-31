@@ -22,12 +22,12 @@ const Favoris = () => {
     }, [])
     useLayoutEffect(() => {
         gsap
-            .to(".title", { opacity: 1, duration: 0.4, stagger: 0.3, y: 100 })
+            .to(".title", { opacity: 1, duration: 0.4, y: 100 })
             .then(() => {
                 gsap.to(".animate", {
                     opacity: 1,
                     duration: 0.4,
-                    stagger: 0.3,
+
                     y: 100,
                 });
             });
@@ -59,7 +59,7 @@ const Favoris = () => {
                     <div className="Agents ">
                         <> {AgentFavoris.map((agent, key) => {
                             return (
-                                <div
+                                <div key={key}
                                     className="Agent animate"
                                     onClick={() => {
                                         setAgentClicked({

@@ -1,9 +1,12 @@
 import axios from "axios";
 import gsap from "gsap";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { UserContext } from "../Context/userContext";
 import "./css/AgentInfo.css";
 const AgentInfo = () => {
+    const { addFavoris, setNotify } = useContext(UserContext)
+
     let { uuid } = useParams();
     const [AgentInfo, setAgentInfo] = useState({
         pseudo: "",
@@ -33,8 +36,20 @@ const AgentInfo = () => {
     }, [uuid]);
 
     useLayoutEffect(() => {
-        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.4, stagger: 0.3, top: 100 });
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.3, top: 100 });
     }, [AgentInfo]);
+
+    const addFavorisAgent = async () => {
+        try {
+            await addFavoris(AgentInfo.pseudo, AgentInfo.description, AgentInfo.imageLink, uuid)
+            setNotify({
+                isTrue: true,
+                text: "Ajouter aux favoris"
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
         <div className="AgentInfo">
@@ -60,6 +75,19 @@ const AgentInfo = () => {
             <h4 className="animateAgentInfo">
                 Description du Role : {AgentInfo.roleDescription}
             </h4>
+            <div
+                className="animateAgentInfo"
+                onClick={addFavorisAgent}
+
+            >
+                <button className="btn btn--light">
+                    <span className="btn__inner">
+                        <span className="btn__slide"></span>
+                        <span className="btn__content">mettre en favoris</span>
+                    </span>
+                </button>
+
+            </div>
         </div>
     );
 };
