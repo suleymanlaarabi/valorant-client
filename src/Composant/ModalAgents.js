@@ -1,13 +1,11 @@
 import gsap from "gsap";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import "./css/ModalAgents.css";
 const ModalAgents = (props) => {
-    const { addFavoris, setNotify, removeFavoris } = useContext(UserContext)
-    useEffect(() => {
-        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3 });
-    }, []);
+    const { addFavoris, setNotify, removeFavoris, currentUser, getFavoris } = useContext(UserContext)
+
     const closeModal = () => {
         gsap
             .to(".Modal", { opacity: 0, duration: 0.3, y: 200, x: 200, scale: 0.6 })
@@ -17,6 +15,38 @@ const ModalAgents = (props) => {
         gsap.to(".BackgroundModal", { opacity: 0, duration: 0.3 });
     };
     const navigate = useNavigate();
+
+    const [AgentFavoris, setAgentFavoris] = useState([])
+    const [IsFavoris, setIsFavoris] = useState(false)
+
+    const setFavorisState = async () => {
+
+        const Fav = await getFavoris()
+        var Favoris = []
+        Fav.map((e) => {
+
+            Favoris.push(e.pseudo)
+        })
+        setAgentFavoris(Favoris)
+
+
+    }
+
+    useEffect(() => {
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, top: 100 });
+
+        if (AgentFavoris.includes(props.agentInfo.pseudo)) {
+            console.log("yes")
+            setIsFavoris(true)
+
+        } else {
+            console.log("no")
+            setIsFavoris(false)
+
+        }
+
+    }, [AgentFavoris]);
+
     const addFavorisAgent = async () => {
         try {
             await addFavoris(props.agentInfo.pseudo, props.agentInfo.description, props.agentInfo.imageLink, props.agentInfo.uuid)
@@ -24,6 +54,7 @@ const ModalAgents = (props) => {
                 isTrue: true,
                 text: "Ajouter aux favoris"
             })
+            closeModal()
         } catch (err) {
             console.log(err)
         }
@@ -35,12 +66,23 @@ const ModalAgents = (props) => {
                 isTrue: true,
                 text: "Supprimer des favoris"
             })
-            props.setFavorisState()
-            props.close()
+            if (props.setFavorisState) {
+                props.setFavorisState()
+            }
+
+            closeModal()
         } catch (err) {
             console.log(err)
         }
     }
+
+    useEffect(() => {
+        setFavorisState()
+    }, []);
+    useEffect(() => {
+
+        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.15 });
+    }, [IsFavoris]);
     return (
         <>
             <div onClick={closeModal} className="BackgroundModal"></div>
@@ -71,7 +113,7 @@ const ModalAgents = (props) => {
                         </button>
 
                     </div>
-                    {!props.agentInfo.isFavoris && <div
+                    {!IsFavoris ? <>{!props.agentInfo.isFavoris && <div
                         className="ModalCloseButton animate"
                         onClick={addFavorisAgent}
                     >
@@ -82,20 +124,22 @@ const ModalAgents = (props) => {
                             </span>
                         </button>
 
-                    </div>}
+                    </div>}</> : <>
+                        <div
+                            className="ModalCloseButton animate"
+                            onClick={removeFavorisAgent}
+                        >
+                            <button className="btn btn--light">
+                                <span className="btn__inner">
+                                    <span className="btn__slide"></span>
+                                    <span className="btn__content">supprimer des favoris</span>
+                                </span>
+                            </button>
 
-                    {props.agentInfo.isFavoris && <div
-                        className="ModalCloseButton animate"
-                        onClick={removeFavorisAgent}
-                    >
-                        <button className="btn btn--light">
-                            <span className="btn__inner">
-                                <span className="btn__slide"></span>
-                                <span className="btn__content">supprimer des favoris</span>
-                            </span>
-                        </button>
+                        </div></>}
 
-                    </div>}
+
+
 
                 </div>
             </div>

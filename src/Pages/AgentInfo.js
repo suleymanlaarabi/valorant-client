@@ -5,8 +5,9 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import "./css/AgentInfo.css";
 const AgentInfo = () => {
-    const { addFavoris, setNotify } = useContext(UserContext)
-
+    const { addFavoris, setNotify, currentUser, getFavoris, removeFavoris } = useContext(UserContext)
+    const [AgentFavoris, setAgentFavoris] = useState([])
+    const [IsFavoris, setIsFavoris] = useState(false)
     let { uuid } = useParams();
     const [AgentInfo, setAgentInfo] = useState({
         pseudo: "",
@@ -17,8 +18,35 @@ const AgentInfo = () => {
         role: "",
         roleDescription: "",
     });
+    const setFavorisState = async () => {
+
+        const Fav = await getFavoris()
+        var Favoris = []
+        Fav.map((e) => {
+
+            Favoris.push(e.pseudo)
+        })
+        setAgentFavoris(Favoris)
+
+
+    }
+    const removeFavorisAgent = async () => {
+        try {
+            await removeFavoris(uuid)
+            setNotify({
+                isTrue: true,
+                text: "Supprimer des favoris"
+            })
+            setIsFavoris(false)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
 
     useEffect(() => {
+        setFavorisState()
         axios
             .get("https://valorant-api.com/v1/agents/" + uuid + "?language=fr-FR")
             .then((res) => {
@@ -36,16 +64,33 @@ const AgentInfo = () => {
     }, [uuid]);
 
     useLayoutEffect(() => {
-        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.3, top: 100 });
-    }, [AgentInfo]);
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, top: 100 });
+
+        if (AgentFavoris.includes(AgentInfo.pseudo)) {
+            console.log("yes")
+            setIsFavoris(true)
+        } else {
+            console.log("no")
+            setIsFavoris(false)
+        }
+
+    }, [AgentInfo, AgentFavoris]);
+    useEffect(() => {
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, top: 100 });
+
+
+
+    }, [IsFavoris]);
 
     const addFavorisAgent = async () => {
+
         try {
             await addFavoris(AgentInfo.pseudo, AgentInfo.description, AgentInfo.imageLink, uuid)
             setNotify({
                 isTrue: true,
                 text: "Ajouter aux favoris"
             })
+            setIsFavoris(true)
         } catch (err) {
             console.log(err)
         }
@@ -75,7 +120,20 @@ const AgentInfo = () => {
             <h4 className="animateAgentInfo">
                 Description du Role : {AgentInfo.roleDescription}
             </h4>
-            <div
+            {IsFavoris && <div
+                className="animateAgentInfo"
+                onClick={removeFavorisAgent}
+
+            >
+                <button className="btn btn--light">
+                    <span className="btn__inner">
+                        <span className="btn__slide"></span>
+                        <span className="btn__content">Supprimer des favoris</span>
+                    </span>
+                </button>
+
+            </div>}
+            {!IsFavoris && <> {currentUser && <div
                 className="animateAgentInfo"
                 onClick={addFavorisAgent}
 
@@ -88,6 +146,8 @@ const AgentInfo = () => {
                 </button>
 
             </div>
+            }</>}
+
         </div>
     );
 };
