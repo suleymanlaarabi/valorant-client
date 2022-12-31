@@ -11,8 +11,35 @@ import { UserContext } from "../Context/userContext";
 import "./css/Agents.css";
 const Agents = () => {
     const [AgentInfo, setAgentInfo] = useState([]);
-    const [NumberAgentsDisplay, setNumberAgentsDisplay] = useState(3);
+    const [AllAgentInfo, setAllAgentInfo] = useState([]);
+    const [NumberAgentsDisplay, setNumberAgentsDisplay] = useState(0);
     const [MoreAgentState, setMoreAgentState] = useState(false);
+
+    const addMoreAgent = () => {
+        if (NumberAgentsDisplay > AllAgentInfo.length) {
+            console.log("true", NumberAgentsDisplay, AllAgentInfo.length)
+            setMoreAgentState(true)
+
+            return;
+        } else {
+            setMoreAgentState(false)
+            console.log("false", NumberAgentsDisplay, AllAgentInfo.length)
+
+            var Agents = []
+            for (var i = 0; i < NumberAgentsDisplay; i++) {
+
+
+                Agents.push({
+                    pseudo: AllAgentInfo[i].displayName,
+                    description: AllAgentInfo[i].description,
+                    imageLink: AllAgentInfo[i].fullPortraitV2,
+                    uuid: AllAgentInfo[i].uuid,
+                })
+
+            }
+            setAgentInfo(Agents)
+        }
+    }
 
     useEffect(() => {
         axios
@@ -20,35 +47,19 @@ const Agents = () => {
                 "https://valorant-api.com/v1/agents?language=fr-FR&isPlayableCharacter=true"
             )
             .then((res) => {
+                setAllAgentInfo(res.data.data)
 
-
-                if (NumberAgentsDisplay > res.data.data.length) {
-                    console.log("true", NumberAgentsDisplay, res.data.data.length)
-                    setMoreAgentState(true)
-
-                    return;
-                } else {
-                    setMoreAgentState(false)
-                    console.log("false", NumberAgentsDisplay, res.data.data.length)
-
-                    var Agents = []
-                    for (var i = 0; i < NumberAgentsDisplay; i++) {
-
-
-                        Agents.push({
-                            pseudo: res.data.data[i].displayName,
-                            description: res.data.data[i].description,
-                            imageLink: res.data.data[i].fullPortraitV2,
-                            uuid: res.data.data[i].uuid,
-                        })
-
-                    }
-                    setAgentInfo(Agents)
-                }
+                setNumberAgentsDisplay(3)
 
 
 
             });
+    }, [
+
+    ])
+    useLayoutEffect(() => {
+        addMoreAgent()
+
     }, [
         NumberAgentsDisplay
     ])
