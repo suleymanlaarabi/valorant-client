@@ -6,7 +6,7 @@ import "./css/ModalSignUp.css";
 const ModalSignUp = (props) => {
     const navigate = useNavigate()
     const [Validation, setValidation] = useState("")
-    const { signUp, signInWithGoogle } = useContext(UserContext)
+    const { signUp, signInWithGoogle, signInWithFacebook } = useContext(UserContext)
     useEffect(() => {
         gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3 });
     }, []);
@@ -70,6 +70,17 @@ const ModalSignUp = (props) => {
             console.log(err)
         }
     }
+    const FacebookSign = async (e) => {
+        e.preventDefault()
+        console.log('test')
+        try {
+            await signInWithFacebook()
+            navigate("/private/profil")
+            props.close()
+        } catch (err) {
+            console.log(err)
+        }
+    }
     return (
         <>
             <div onClick={closeModal} className="BackgroundModal"></div>
@@ -92,7 +103,15 @@ const ModalSignUp = (props) => {
                         <button className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">S'inscrire avec google</span>
+                                <span className="btn__content">S'inscrire avec Google</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div onClick={FacebookSign} className="animate SignButtonModal">
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">S'inscrire avec Facebook</span>
                             </span>
                         </button>
                     </div>

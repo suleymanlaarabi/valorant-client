@@ -1,19 +1,20 @@
 import axios from "axios";
 import gsap from "gsap";
 import React, {
+    useContext,
     useEffect,
     useLayoutEffect,
     useState,
 } from "react";
 import ModalAgents from "../Composant/ModalAgents";
+import { UserContext } from "../Context/userContext";
 import "./css/Agents.css";
 const Agents = () => {
     const [AgentInfo, setAgentInfo] = useState([]);
     const [NumberAgentsDisplay, setNumberAgentsDisplay] = useState(3);
     const [MoreAgentState, setMoreAgentState] = useState(false);
 
-
-    useLayoutEffect(() => {
+    useEffect(() => {
         axios
             .get(
                 "https://valorant-api.com/v1/agents?language=fr-FR&isPlayableCharacter=true"
@@ -41,8 +42,6 @@ const Agents = () => {
                             uuid: res.data.data[i].uuid,
                         })
 
-
-
                     }
                     setAgentInfo(Agents)
                 }
@@ -53,10 +52,7 @@ const Agents = () => {
     }, [
         NumberAgentsDisplay
     ])
-    useEffect(() => {
-        setAgentInfo([]);
 
-    }, []);
 
     useLayoutEffect(() => {
         gsap
@@ -111,6 +107,7 @@ const Agents = () => {
                             key={key}
                         >
                             <h2>{agent.pseudo}</h2>
+
                             <img placeholder="test" src={agent.imageLink} alt="Comming Soon" />
                         </div>
                     );

@@ -10,6 +10,7 @@ const Favoris = () => {
 
         const Fav = await getFavoris()
         setAgentFavoris(Fav)
+        console.log(Fav)
 
     }
     useEffect(() => {

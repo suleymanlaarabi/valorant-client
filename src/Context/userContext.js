@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile, } from "firebase/auth";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateEmail, updateProfile, } from "firebase/auth";
 import { auth, db } from "../firebase-config";
 import Loader from "../Composant/Loader"
 import Toast from "../Composant/Toast";
@@ -17,11 +17,20 @@ export function UserContextProvider(props) {
     const [notify, setNotify] = useState({
         isTrue: false
     })
-    const provider = new GoogleAuthProvider()
+    const providerGoogle = new GoogleAuthProvider()
+    const providerFacebook = new FacebookAuthProvider()
 
     const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
     const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
-    const signInWithGoogle = () => signInWithPopup(auth, provider).then((result) => {
+    const updateEmailUser = async (email) => updateEmail(currentUser, email).then(() => {
+        console.log("email update")
+        return "Email mis a jour";
+    }).catch((error) => {
+
+        return error.code
+    });
+
+    const signInWithGoogle = () => signInWithPopup(auth, providerGoogle).then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
@@ -42,6 +51,38 @@ export function UserContextProvider(props) {
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
         console.log(errorCode, errorMessage, email, credential)
+        if (errorCode == "auth/account-exists-with-different-credential") {
+            alert("Compte deja cree avec un autre fournisseur")
+
+        }
+        // ...
+    });
+
+    const signInWithFacebook = () => signInWithPopup(auth, providerFacebook).then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        console.log("user", user)
+        console.log("credential", credential)
+        console.log("token", token)
+        setcurrentUser(user)
+        return;
+
+    }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.log(errorCode)
+        if (errorCode == "auth/account-exists-with-different-credential") {
+            alert("Compte deja cree avec un autre fournisseur")
+
+        }
         // ...
     });
 
@@ -102,7 +143,7 @@ export function UserContextProvider(props) {
         return unsubscribe;
     }, [])
     return (
-        <UserContext.Provider value={{ signIn, signUp, currentUser, updateProfilePseudo, setNotify, addFavoris, getFavoris, removeFavoris, signInWithGoogle }}>
+        <UserContext.Provider value={{ signIn, signUp, currentUser, updateProfilePseudo, setNotify, addFavoris, getFavoris, removeFavoris, signInWithGoogle, updateEmailUser, signInWithFacebook }}>
             <Toast notify={notify} setNotify={setNotify} />
             {!loadingData ? props.children : <Loader />}
         </UserContext.Provider>

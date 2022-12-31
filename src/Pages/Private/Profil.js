@@ -1,12 +1,12 @@
 import { signOut } from 'firebase/auth';
 import gsap from 'gsap';
 import React, { useContext, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/userContext';
 import { auth } from '../../firebase-config';
 import "../css/Profil.css"
 const Profil = () => {
-    const { currentUser, updateProfilePseudo, setNotify } = useContext(UserContext)
+    const { currentUser, updateProfilePseudo, setNotify, updateEmailUser } = useContext(UserContext)
     const navigate = useNavigate()
     useEffect(() => {
         gsap
@@ -14,8 +14,9 @@ const Profil = () => {
 
         console.log(auth)
     }, [])
-    const handleForm = async (e) => {
+    const handleFormPseudo = async (e) => {
         e.preventDefault()
+
         try {
             await updateProfilePseudo(inputs.current[0].value)
             setNotify({
@@ -25,6 +26,26 @@ const Profil = () => {
 
         } catch (err) {
             console.log(err)
+        }
+
+    }
+    const handleFormEmail = async (e) => {
+        e.preventDefault()
+
+        try {
+            const cred = await updateEmailUser(inputs.current[1].value)
+
+            setNotify({
+                isTrue: true,
+                text: cred
+            })
+
+        } catch (err) {
+
+            setNotify({
+                isTrue: true,
+                text: JSON.stringify(err)
+            })
         }
 
     }
@@ -49,14 +70,30 @@ const Profil = () => {
             <h2>Profil</h2>
             <form>
                 <label htmlFor="pseudo">Pseudo</label>
-                <input ref={addInputs} type="text" placeholder='Pseudo' name='pseudo' id='pseudo' defaultValue={currentUser.displayName} />
-                <div style={{ marginTop: 10 }} className="animate buttonAnim button">
-                    <button style={{ marginLeft: 10, marginRight: 10 }} onClick={handleForm} className="btn btn--light">
+                <div>
+                    <input ref={addInputs} type="text" placeholder='Pseudo' name='pseudo' id='pseudo' defaultValue={currentUser.displayName} />
+                    <button style={{ marginLeft: 10, marginRight: 10 }} onClick={handleFormPseudo} className="btn btn--light">
                         <span className="btn__inner">
                             <span className="btn__slide"></span>
-                            <span className="btn__content">Mettre a jour le profil</span>
+                            <span className="btn__content">Mettre a jour</span>
                         </span>
                     </button>
+                </div>
+
+                <label htmlFor="email">Email</label>
+                <div>
+                    <input ref={addInputs} type="text" placeholder='email' name='email' id='email' defaultValue={currentUser.email} />
+
+                    <button style={{ marginLeft: 10, marginRight: 10 }} onClick={handleFormEmail} className="btn btn--light">
+                        <span className="btn__inner">
+                            <span className="btn__slide"></span>
+                            <span className="btn__content">Mettre a jour</span>
+                        </span>
+                    </button>
+                </div>
+
+                <div style={{ marginTop: 10 }} className="animate buttonAnim button">
+
                     <button style={{ marginLeft: 10, marginRight: 10 }} onClick={logOut} className="btn btn--light">
                         <span className="btn__inner">
                             <span className="btn__slide"></span>

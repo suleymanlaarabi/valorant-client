@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import "./css/ModalSignIn.css";
 const ModalSignIn = (props) => {
-    const { signIn, signInWithGoogle } = useContext(UserContext)
+    const { signIn, signInWithGoogle, signInWithFacebook } = useContext(UserContext)
     const navigate = useNavigate()
     const [Validation, setValidation] = useState("")
 
@@ -48,6 +48,17 @@ const ModalSignIn = (props) => {
             console.log(err)
         }
     }
+    const FacebookSign = async (e) => {
+        e.preventDefault()
+        console.log('test')
+        try {
+            await signInWithFacebook()
+            navigate("/private/profil")
+            props.close()
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
     useEffect(() => {
@@ -83,6 +94,14 @@ const ModalSignIn = (props) => {
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
                                 <span className="btn__content">se connecter avec google</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div onClick={FacebookSign} className="animate SignButtonModal">
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">se connecter avec Facebook</span>
                             </span>
                         </button>
                     </div>
