@@ -6,7 +6,7 @@ import "./css/ModalSignUp.css";
 const ModalSignUp = (props) => {
     const navigate = useNavigate()
     const [Validation, setValidation] = useState("")
-    const { signUp } = useContext(UserContext)
+    const { signUp, signInWithGoogle } = useContext(UserContext)
     useEffect(() => {
         gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3 });
     }, []);
@@ -58,21 +58,40 @@ const ModalSignUp = (props) => {
             }
         }
     }
+    const GoogleSign = async (e) => {
+        e.preventDefault()
+        console.log('test')
+        try {
+            await signInWithGoogle()
+            navigate("/private/profil")
+            props.close()
+        } catch (err) {
+            console.log(err)
+        }
+    }
     return (
         <>
             <div onClick={closeModal} className="BackgroundModal"></div>
             <div className="Modal">
                 <h2>S'inscrire</h2>
-                <form ref={formRef} onSubmit={handleForm}>
+                <form ref={formRef}>
                     <input ref={addInputs} type="text" name="" placeholder="email" id="" />
                     <input ref={addInputs} type="password" name="" placeholder="mot de passe" id="" />
                     <input ref={addInputs} type="password" name="" placeholder="repeter le mot de passe" id="" />
 
-                    <div className="animate SignButtonModal">
+                    <div onClick={handleForm} className="animate SignButtonModal">
                         <button className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
                                 <span className="btn__content">S'inscrire</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div onClick={GoogleSign} className="animate SignButtonModal">
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">S'inscrire avec google</span>
                             </span>
                         </button>
                     </div>

@@ -29,7 +29,6 @@ function App() {
               <Route path="/private" element={<Private />} >
                 <Route path="/private/favoris" element={<Favoris />} />
                 <Route path="/private/profil" element={<Profil />} />
-
               </Route>
             </Routes>
             <Footer />

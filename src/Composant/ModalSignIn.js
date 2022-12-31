@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import "./css/ModalSignIn.css";
 const ModalSignIn = (props) => {
-    const { signIn } = useContext(UserContext)
+    const { signIn, signInWithGoogle } = useContext(UserContext)
     const navigate = useNavigate()
     const [Validation, setValidation] = useState("")
 
@@ -36,6 +36,17 @@ const ModalSignIn = (props) => {
         }
 
     }
+    const GoogleSign = async (e) => {
+        e.preventDefault()
+        console.log('test')
+        try {
+            await signInWithGoogle()
+            navigate("/private/profil")
+            props.close()
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
     useEffect(() => {
@@ -55,14 +66,22 @@ const ModalSignIn = (props) => {
             <div className="Modal">
                 <h2>Se connecter</h2>
                 <form ref={formRef}
-                    onSubmit={handleForm}>
+                >
                     <input ref={addInputs} type="text" name="" placeholder="email" id="" />
                     <input ref={addInputs} type="password" name="" placeholder="mot de passe" id="" />
-                    <div className="animate SignButtonModal">
+                    <div onClick={handleForm} className="animate SignButtonModal">
                         <button className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
                                 <span className="btn__content">Se connecter</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div onClick={GoogleSign} className="animate SignButtonModal">
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">se connecter avec google</span>
                             </span>
                         </button>
                     </div>
