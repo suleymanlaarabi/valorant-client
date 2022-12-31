@@ -9,26 +9,53 @@ import ModalAgents from "../Composant/ModalAgents";
 import "./css/Agents.css";
 const Agents = () => {
     const [AgentInfo, setAgentInfo] = useState([]);
-    useEffect(() => {
-        setAgentInfo([]);
+    const [NumberAgentsDisplay, setNumberAgentsDisplay] = useState(3);
+    const [MoreAgentState, setMoreAgentState] = useState(false);
+
+
+    useLayoutEffect(() => {
         axios
             .get(
                 "https://valorant-api.com/v1/agents?language=fr-FR&isPlayableCharacter=true"
             )
             .then((res) => {
-                res.data.data.map((data) => {
-                    setAgentInfo((current) => [
-                        ...current,
-                        {
-                            pseudo: data.displayName,
-                            description: data.description,
-                            imageLink: data.fullPortraitV2,
-                            uuid: data.uuid,
-                        },
-                    ]);
-                    return 0
-                });
+
+
+                if (NumberAgentsDisplay > res.data.data.length) {
+                    console.log("true", NumberAgentsDisplay, res.data.data.length)
+                    setMoreAgentState(true)
+
+                    return;
+                } else {
+                    setMoreAgentState(false)
+                    console.log("false", NumberAgentsDisplay, res.data.data.length)
+
+                    var Agents = []
+                    for (var i = 0; i < NumberAgentsDisplay; i++) {
+
+
+                        Agents.push({
+                            pseudo: res.data.data[i].displayName,
+                            description: res.data.data[i].description,
+                            imageLink: res.data.data[i].fullPortraitV2,
+                            uuid: res.data.data[i].uuid,
+                        })
+
+
+
+                    }
+                    setAgentInfo(Agents)
+                }
+
+
+
             });
+    }, [
+        NumberAgentsDisplay
+    ])
+    useEffect(() => {
+        setAgentInfo([]);
+
     }, []);
 
     useLayoutEffect(() => {
@@ -38,7 +65,7 @@ const Agents = () => {
                 gsap.to(".animate", {
                     opacity: 1,
                     duration: 0.4,
-                    stagger: 0.3,
+
                     y: 100,
                 });
             });
@@ -84,11 +111,26 @@ const Agents = () => {
                             key={key}
                         >
                             <h2>{agent.pseudo}</h2>
-                            <img src={agent.imageLink} alt="Comming Soon" />
+                            <img placeholder="test" src={agent.imageLink} alt="Comming Soon" />
                         </div>
                     );
                 })}
+                <div
+                    className="animate ButtonMoreAgent"
+                    onClick={() => {
+                        setNumberAgentsDisplay(NumberAgentsDisplay + 3)
+                    }}
+                >
+                    <button className="btn btn--light">
+                        <span className="btn__inner">
+                            <span className="btn__slide"></span>
+                            <span className="btn__content">{MoreAgentState ? "Aucun Agents a rajouter" : "Plus D'Agents"}</span>
+                        </span>
+                    </button>
+
+                </div>
             </div>
+
         </div>
     );
 };

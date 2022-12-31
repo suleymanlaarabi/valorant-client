@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore"
 const firebaseConfig = {
     apiKey: "AIzaSyAIOXC5l88VWJS9JgjXbID6qg9-wn9tI9w",

@@ -1,17 +1,16 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signInWithRedirect, updateProfile, } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile, } from "firebase/auth";
 import { auth, db } from "../firebase-config";
 import Loader from "../Composant/Loader"
 import Toast from "../Composant/Toast";
-import { addDoc, collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
 export const UserContext = createContext()
 
 
 
 export function UserContextProvider(props) {
 
-    const navigate = useNavigate()
+
 
     const [currentUser, setcurrentUser] = useState()
     const [loadingData, setLoadingData] = useState(true)
@@ -42,6 +41,7 @@ export function UserContextProvider(props) {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(errorCode, errorMessage, email, credential)
         // ...
     });
 

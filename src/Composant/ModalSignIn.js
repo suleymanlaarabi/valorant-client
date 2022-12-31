@@ -25,6 +25,7 @@ const ModalSignIn = (props) => {
                 inputs.current[0].value,
                 inputs.current[1].value
             )
+            console.log(cred)
             formRef.current.reset()
             setValidation("")
             navigate("/private/profil")
@@ -86,7 +87,7 @@ const ModalSignIn = (props) => {
                         </button>
                     </div>
 
-
+                    <h4 style={{ color: "red" }}>{Validation}</h4>
                 </form>
             </div >
         </>

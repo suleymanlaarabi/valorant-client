@@ -41,6 +41,7 @@ const ModalSignUp = (props) => {
                     inputs.current[0].value,
                     inputs.current[1].value
                 )
+                console.log(cred)
                 formRef.current.reset()
                 setValidation("")
                 navigate("/private/profil")
