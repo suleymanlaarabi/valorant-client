@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "./css/ModalArmes.css";
 const ModalArmes = (props) => {
     useEffect(() => {
-        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.3 });
+        gsap.to(".animate", { opacity: 1, duration: 0.5, stagger: 0.2 });
     }, []);
     const closeModal = () => {
         gsap
@@ -21,15 +21,15 @@ const ModalArmes = (props) => {
                 <img alt="Comming Soon" className="animate" src={props.armeInfo.imageLink} />
                 <div className="paragrapheRef animate">
                     <h3>
-                        Ratio de tire : <span>{props.armeInfo.armeState.fireRate}</span>
+                        Ratio de tire : <span>{props.armeInfo.armeState ? props.armeInfo.armeState.fireRate : "Aucune Info Pour cette arme"}</span>
                     </h3>
                     <h3>
                         Temps de recharge :{" "}
-                        <span>{props.armeInfo.armeState.reloadTimeSeconds}s</span>
+                        <span>{props.armeInfo.armeState ? props.armeInfo.armeState.reloadTimeSeconds : "Aucune Info Pour cette arme"}</span>
                     </h3>
                     <h3>
                         Temps d'equipage :{" "}
-                        <span>{props.armeInfo.armeState.equipTimeSeconds}</span>
+                        <span>{props.armeInfo.armeState ? props.armeInfo.armeState.equipTimeSeconds : "Aucune Info Pour cette arme"}</span>
                     </h3>
                 </div>
                 <div className="animate ModalCloseButton" onClick={closeModal}>
