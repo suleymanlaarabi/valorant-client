@@ -113,31 +113,33 @@ const ModalAgents = (props) => {
                         </button>
 
                     </div>
-                    {!IsFavoris ? <>{!props.agentInfo.isFavoris && <div
-                        className="ModalCloseButton animate"
-                        onClick={addFavorisAgent}
-                    >
-                        <button className="btn btn--light">
-                            <span className="btn__inner">
-                                <span className="btn__slide"></span>
-                                <span className="btn__content">mettre en favoris</span>
-                            </span>
-                        </button>
-
-                    </div>}</> : <>
-                        <div
+                    {currentUser &&
+                        <>{!IsFavoris ? <>{!props.agentInfo.isFavoris && <div
                             className="ModalCloseButton animate"
-                            onClick={removeFavorisAgent}
+                            onClick={addFavorisAgent}
                         >
                             <button className="btn btn--light">
                                 <span className="btn__inner">
                                     <span className="btn__slide"></span>
-                                    <span className="btn__content">supprimer des favoris</span>
+                                    <span className="btn__content">mettre en favoris</span>
                                 </span>
                             </button>
 
-                        </div></>}
+                        </div>}</> : <>
+                            <div
+                                className="ModalCloseButton animate"
+                                onClick={removeFavorisAgent}
+                            >
+                                <button className="btn btn--light">
+                                    <span className="btn__inner">
+                                        <span className="btn__slide"></span>
+                                        <span className="btn__content">supprimer des favoris</span>
+                                    </span>
+                                </button>
 
+                            </div></>}
+
+                        </>}
 
 
 
