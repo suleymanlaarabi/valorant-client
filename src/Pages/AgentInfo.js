@@ -64,7 +64,7 @@ const AgentInfo = () => {
     }, [uuid]);
 
     useLayoutEffect(() => {
-        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, top: 100 });
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.2, top: 100 });
 
         if (AgentFavoris.includes(AgentInfo.pseudo)) {
             console.log("yes")
@@ -76,7 +76,7 @@ const AgentInfo = () => {
 
     }, [AgentInfo, AgentFavoris]);
     useEffect(() => {
-        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, top: 100 });
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.2, top: 100 });
 
 
 
