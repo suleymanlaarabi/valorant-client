@@ -79,7 +79,7 @@ export function UserContextProvider(props) {
         // The AuthCredential type that was used.
         const credential = FacebookAuthProvider.credentialFromError(error);
         console.log(errorCode)
-        if (errorCode == "auth/account-exists-with-different-credential") {
+        if (errorCode === "auth/account-exists-with-different-credential") {
             alert("Compte deja cree avec un autre fournisseur")
 
         }
