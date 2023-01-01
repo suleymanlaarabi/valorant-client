@@ -27,6 +27,15 @@ svg{
 .heroBanner .contain{
     position: absolute;
         z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+}
+#SVGvalo{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    fill: white;
 }
 .contain p {
     font-size: 1.2em;

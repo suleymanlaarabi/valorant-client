@@ -25,6 +25,7 @@ code {
 ::-webkit-scrollbar {
   width: 12px;
     background: rgb(18, 21, 33);
+    
 }
 
 /* Track */
@@ -35,6 +36,11 @@ code {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.064);
+
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.193);
+  
 
 }
 
