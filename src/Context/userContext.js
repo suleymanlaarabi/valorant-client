@@ -18,8 +18,11 @@ export function UserContextProvider(props) {
     useEffect(() => {
         if (localStorage.getItem("lang") == "fr-FR") {
             setLangage(AllLangage.fr)
-        } else {
+        } else if (localStorage.getItem("lang") == "en-US") {
             setLangage(AllLangage.en)
+
+        } else if (localStorage.getItem("lang") == "es-ES") {
+            setLangage(AllLangage.es)
 
         }
     }, [])

@@ -100,7 +100,7 @@ const Agents = () => {
                 <ModalAgents agentInfo={AgentClicked} close={closeModal} />
             )}
 
-            <h2 className="title">Agents</h2>
+            <h2 className="title">{Langage.Agents.title}</h2>
 
             <div className="Agents ">
                 {AgentInfo.map((agent, key) => {

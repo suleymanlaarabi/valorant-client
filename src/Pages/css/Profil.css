@@ -11,7 +11,17 @@ min-height: calc(100vh - 408px);}
         
 }
 
-.ListLangue{
-    height: 50px;
-    width: 300px;
+
+
+.LangButton{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.LangButton button{
+    margin: 10px;
+}
+
+#setLangButton{
+    display: none;
 }

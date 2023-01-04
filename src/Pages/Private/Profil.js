@@ -96,20 +96,39 @@ const Profil = () => {
                     </button>
                 </div>
                 <label htmlFor="email">Langue</label>
-                <div className='InputProfil'>
 
-                    <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "fr-FR"); setLangage(AllLangage.fr) }} className="btn btn--light">
+
+                <div className='InputProfil LangButton'>
+                    <button id='showDivLangButto' style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { document.getElementById("setLangButton").style.display = "block"; document.getElementById("showDivLangButto").style.display = "none" }} className="btn btn--light ,">
                         <span className="btn__inner">
                             <span className="btn__slide"></span>
-                            <span className="btn__content">{Langage.Profil.frButton}</span>
+                            <span className="btn__content">{Langage.Profil.showButtonLang}</span>
                         </span>
                     </button>
-                    <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "en-US "); setLangage(AllLangage.en) }} className="btn btn--light">
-                        <span className="btn__inner">
-                            <span className="btn__slide"></span>
-                            <span className="btn__content">{Langage.Profil.enButton}</span>
-                        </span>
-                    </button>
+                    <div id='setLangButton'>
+                        <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "fr-FR"); setLangage(AllLangage.fr); document.getElementById("setLangButton").style.display = "none"; document.getElementById("showDivLangButto").style.display = "block" }} className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">{Langage.Profil.frButton}</span>
+                            </span>
+                        </button>
+                        <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "en-US "); setLangage(AllLangage.en); document.getElementById("setLangButton").style.display = "none"; document.getElementById("showDivLangButto").style.display = "block" }} className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">{Langage.Profil.enButton}</span>
+                            </span>
+                        </button>
+                        <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "es-ES "); setLangage(AllLangage.es); document.getElementById("setLangButton").style.display = "none"; document.getElementById("showDivLangButto").style.display = "block" }} className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">{Langage.Profil.esButton}</span>
+                            </span>
+                        </button>
+                    </div>
+
+
+
+
 
                 </div>
 
