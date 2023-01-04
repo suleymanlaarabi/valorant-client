@@ -4,7 +4,7 @@ import ModalAgents from '../../Composant/ModalAgents';
 import { UserContext } from '../../Context/userContext';
 import "../css/Favoris.css"
 const Favoris = () => {
-    const { getFavoris } = useContext(UserContext)
+    const { getFavoris, Langage } = useContext(UserContext)
     const [AgentFavoris, setAgentFavoris] = useState([])
     const setFavorisState = async () => {
 
@@ -53,7 +53,7 @@ const Favoris = () => {
             {AgentClicked.isClicked && (
                 <ModalAgents setFavorisState={setFavorisState} agentInfo={AgentClicked} close={closeModal} />
             )}
-            <h2>Favoris</h2>
+            <h2>{Langage.Favoris.title}</h2>
             <div className="minHeightFavoris">
                 {AgentFavoris[0] ?
                     <div className="Agents ">
@@ -81,7 +81,7 @@ const Favoris = () => {
 
 
                     </div>
-                    : <h5>Aucun Agent en favoris</h5>}
+                    : <h5>{Langage.Favoris.NoAgentText}</h5>}
             </div>
         </div>
     );

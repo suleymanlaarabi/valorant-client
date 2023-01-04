@@ -82,3 +82,12 @@ height: 120px;
     margin-right: 10px;
     
 }
+
+
+
+@media (max-width:1295px) {
+    .ButtonLike {
+            display: none;
+            
+        }
+}

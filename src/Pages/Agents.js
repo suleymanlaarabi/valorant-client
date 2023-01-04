@@ -14,6 +14,7 @@ const Agents = () => {
     const [AllAgentInfo, setAllAgentInfo] = useState([]);
     const [NumberAgentsDisplay, setNumberAgentsDisplay] = useState(0);
     const [MoreAgentState, setMoreAgentState] = useState(false);
+    const { Langage } = useContext(UserContext)
 
     const addMoreAgent = () => {
         if (NumberAgentsDisplay > AllAgentInfo.length) {
@@ -42,9 +43,11 @@ const Agents = () => {
     }
 
     useEffect(() => {
+
+
         axios
             .get(
-                "https://valorant-api.com/v1/agents?language=fr-FR&isPlayableCharacter=true"
+                "https://valorant-api.com/v1/agents?language=" + Langage.name + "&isPlayableCharacter=true"
             )
             .then((res) => {
                 setAllAgentInfo(res.data.data)
@@ -132,7 +135,7 @@ const Agents = () => {
                     <button className="btn btn--light">
                         <span className="btn__inner">
                             <span className="btn__slide"></span>
-                            <span className="btn__content">{MoreAgentState ? "Aucun Agents a rajouter" : "Plus D'Agents"}</span>
+                            <span className="btn__content">{MoreAgentState ? Langage.Agents.noMoreAgentButton : Langage.Agents.moreAgentButton}</span>
                         </span>
                     </button>
 

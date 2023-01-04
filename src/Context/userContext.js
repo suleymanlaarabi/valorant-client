@@ -4,15 +4,29 @@ import { auth, db } from "../firebase-config";
 import Loader from "../Composant/Loader"
 import Toast from "../Composant/Toast";
 import { collection, deleteDoc, doc, getDocs, setDoc } from "firebase/firestore";
+import { AllLangage } from "../LangageConfig";
 export const UserContext = createContext()
 
 
 
 export function UserContextProvider(props) {
 
-
+    const [Langage, setLangage] = useState(AllLangage.fr)
 
     const [currentUser, setcurrentUser] = useState()
+
+    useEffect(() => {
+        if (localStorage.getItem("lang") == "fr-FR") {
+            setLangage(AllLangage.fr)
+        } else {
+            setLangage(AllLangage.en)
+
+        }
+    }, [])
+
+
+
+
     const [loadingData, setLoadingData] = useState(true)
     const [notify, setNotify] = useState({
         isTrue: false
@@ -143,7 +157,7 @@ export function UserContextProvider(props) {
         return unsubscribe;
     }, [])
     return (
-        <UserContext.Provider value={{ signIn, signUp, currentUser, updateProfilePseudo, setNotify, addFavoris, getFavoris, removeFavoris, signInWithGoogle, updateEmailUser, signInWithFacebook }}>
+        <UserContext.Provider value={{ signIn, signUp, currentUser, updateProfilePseudo, setNotify, addFavoris, getFavoris, removeFavoris, signInWithGoogle, updateEmailUser, signInWithFacebook, Langage, setLangage }}>
             <Toast notify={notify} setNotify={setNotify} />
             {!loadingData ? props.children : <Loader />}
         </UserContext.Provider>

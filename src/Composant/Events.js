@@ -1,13 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import FeaturesCard from "./FeaturesCard";
 import CelebrationIcon from "@mui/icons-material/Celebration";
+import { UserContext } from "../Context/userContext";
 const Events = () => {
     const [EventInfo, setEventInfo] = useState([]);
+    const { Langage } = useContext(UserContext)
     useEffect(() => {
         setEventInfo([]);
         axios
-            .get("https://valorant-api.com/v1/events?language=fr-FR")
+            .get("https://valorant-api.com/v1/events?language=" + Langage.name)
             .then((res) => {
                 res.data.data.map((event) => {
                     setEventInfo((current) => [

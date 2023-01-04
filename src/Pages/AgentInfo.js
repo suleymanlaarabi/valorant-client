@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import "./css/AgentInfo.css";
 const AgentInfo = () => {
-    const { addFavoris, setNotify, currentUser, getFavoris, removeFavoris } = useContext(UserContext)
+    const { addFavoris, setNotify, currentUser, getFavoris, removeFavoris, Langage } = useContext(UserContext)
     const [AgentFavoris, setAgentFavoris] = useState([])
     const [IsFavoris, setIsFavoris] = useState(false)
     let { uuid } = useParams();
@@ -38,6 +38,8 @@ const AgentInfo = () => {
                 text: "Supprimer des favoris"
             })
             setIsFavoris(false)
+            gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, top: 100 });
+
 
         } catch (err) {
             console.log(err)
@@ -48,7 +50,7 @@ const AgentInfo = () => {
     useEffect(() => {
         setFavorisState()
         axios
-            .get("https://valorant-api.com/v1/agents/" + uuid + "?language=fr-FR")
+            .get("https://valorant-api.com/v1/agents/" + uuid + "?language=" + Langage.name)
             .then((res) => {
                 var data = res.data.data;
                 setAgentInfo({
@@ -63,24 +65,27 @@ const AgentInfo = () => {
             });
     }, [uuid]);
 
-    useLayoutEffect(() => {
-        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.2, top: 100 });
+    useEffect(() => {
+        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.2, top: 100 }).then(() => {
+            if (AgentFavoris.includes(AgentInfo.pseudo)) {
+                console.log("yes")
+                setIsFavoris(true)
+            } else {
+                console.log("no")
+                setIsFavoris(false)
+            }
 
-        if (AgentFavoris.includes(AgentInfo.pseudo)) {
-            console.log("yes")
-            setIsFavoris(true)
-        } else {
-            console.log("no")
-            setIsFavoris(false)
-        }
+        })
+
 
     }, [AgentInfo, AgentFavoris]);
     useEffect(() => {
-        gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.2, top: 100 });
+        gsap.to(".animateFavorisButton", { opacity: 1, duration: 0.25, top: 100 })
+
+    }, [IsFavoris])
 
 
 
-    }, [IsFavoris]);
 
     const addFavorisAgent = async () => {
 
@@ -91,6 +96,8 @@ const AgentInfo = () => {
                 text: "Ajouter aux favoris"
             })
             setIsFavoris(true)
+            gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, top: 100 });
+
         } catch (err) {
             console.log(err)
         }
@@ -121,7 +128,7 @@ const AgentInfo = () => {
                 Description du Role : {AgentInfo.roleDescription}
             </h4>
             {IsFavoris && <div
-                className="animateAgentInfo"
+                className="animateAgentInfo animateFavorisButton"
                 onClick={removeFavorisAgent}
 
             >
@@ -134,7 +141,7 @@ const AgentInfo = () => {
 
             </div>}
             {!IsFavoris && <> {currentUser && <div
-                className="animateAgentInfo"
+                className="animateAgentInfo animateFavorisButton"
                 onClick={addFavorisAgent}
 
             >

@@ -1,15 +1,17 @@
 import axios from "axios";
 import gsap from "gsap";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import ModalArmes from "../Composant/ModalArmes";
+import { UserContext } from "../Context/userContext";
 import "./css/Armes.css";
 const Armes = () => {
     const [ArmesInfo, setArmesInfo] = useState([]);
+    const { Langage } = useContext(UserContext)
 
     useEffect(() => {
         setArmesInfo([]);
         axios
-            .get("https://valorant-api.com/v1/weapons?language=fr-FR")
+            .get("https://valorant-api.com/v1/weapons?language=" + Langage.name)
             .then((res) => {
                 res.data.data.map((data) => {
                     setArmesInfo((current) => [
@@ -54,7 +56,7 @@ const Armes = () => {
                 <ModalArmes armeInfo={ArmeClicked} close={closeModal} />
             )}
 
-            <h2 className="title">Armes</h2>
+            <h2 className="title">{Langage.Armes.title}</h2>
             <div className="Armes">
                 {ArmesInfo.map((arme, key) => {
                     return (

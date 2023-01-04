@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./Composant/Footer";
@@ -13,6 +15,7 @@ import Private from "./Pages/Private/Private";
 import Profil from "./Pages/Private/Profil";
 
 function App() {
+
 
   return (
     <>

@@ -1,2 +1,17 @@
 .Profil{
 min-height: calc(100vh - 408px);}
+
+.InputProfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   padding: 10px;
+  
+    
+        
+}
+
+.ListLangue{
+    height: 50px;
+    width: 300px;
+}

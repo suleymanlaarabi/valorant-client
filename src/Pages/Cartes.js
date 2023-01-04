@@ -1,9 +1,13 @@
 import axios from "axios";
 import gsap from "gsap";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import ModalCartes from "../Composant/ModalCartes";
+import { UserContext } from "../Context/userContext";
 import "./css/Cartes.css";
+
 const Cartes = () => {
+    const { Langage } = useContext(UserContext)
+
     const [CarteInfo, setCarteInfo] = useState([
         {
             pseudo: "",
@@ -14,7 +18,7 @@ const Cartes = () => {
     ]);
     useEffect(() => {
         setCarteInfo([]);
-        axios.get("https://valorant-api.com/v1/maps?language=fr-FR").then((res) => {
+        axios.get("https://valorant-api.com/v1/maps?language=" + Langage.name).then((res) => {
             res.data.data.map((data) => {
                 setCarteInfo((current) => [
                     ...current,
@@ -62,7 +66,7 @@ const Cartes = () => {
                 <ModalCartes carteInfo={CarteClicked} close={closeModal} />
             )}
 
-            <h2 className="title">Cartes</h2>
+            <h2 className="title">{Langage.Cartes.title}</h2>
             <div className="Cartes">
                 {CarteInfo.map((carte, key) => {
                     return (

@@ -9,13 +9,14 @@ import ModalSignUp from "./ModalSignUp";
 
 
 const NavBar = () => {
-    const { currentUser } = useContext(UserContext)
+    const { currentUser, Langage } = useContext(UserContext)
     const navigate = useNavigate()
     const [SignModal, setSignModal] = useState({
         SignIn: false,
         SignUp: false
     })
     useEffect(() => {
+        console.log(Langage)
         gsap.to(".logo", { opacity: 1, duration: 0.4, y: 120 }).then(() => {
             gsap
                 .to(".buttonAnim", { opacity: 1, duration: 0.4, y: 100, stagger: 0.3 })
@@ -53,16 +54,16 @@ const NavBar = () => {
             <img className="logo" src={logo} alt="" />
             <div className="LinkNav">
                 <NavLink onClick={GsapRestart} className="buttonAnim link" to="/">
-                    Accueil
+                    {Langage.NavBar.accueilButtonText}
                 </NavLink>
                 <NavLink className="buttonAnim link" to="/Agents">
-                    Agents
+                    {Langage.NavBar.agentsButtonText}
                 </NavLink>
                 <NavLink className="buttonAnim link" to="/Armes">
-                    Armes
+                    {Langage.NavBar.armesButtonText}
                 </NavLink>
                 <NavLink className="buttonAnim link" to="/Cartes">
-                    Cartes
+                    {Langage.NavBar.cartesButtonText}
                 </NavLink>
             </div>
             <div className="SignButton">
@@ -94,26 +95,29 @@ const NavBar = () => {
                     </div></>}
 
                 {currentUser && <>
-                    <div onClick={() => { navigate("/private/profil") }} className="animate buttonAnim button">
+                    <div onClick={() => { navigate("/private/profil") }} className="animate buttonAnim button ">
                         <button className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">Profil</span>
+                                <span className="btn__content">{Langage.NavBar.ProfilButton}</span>
                             </span>
                         </button>
                     </div>
                     <div onClick={() => {
                         navigate("/private/favoris")
-                    }} className="animate buttonAnim button">
+                    }} className="animate buttonAnim button ButtonLike">
                         <button className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">Favoris</span>
+                                <span className="btn__content">{Langage.NavBar.FavorisButton}</span>
                             </span>
                         </button>
                     </div>
 
                 </>}
+
+
+
 
             </div>
 

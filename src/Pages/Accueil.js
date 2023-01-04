@@ -10,7 +10,7 @@ import gsap from "gsap";
 import { UserContext } from "../Context/userContext";
 
 const Accueil = () => {
-    const { currentUser } = useContext(UserContext)
+    const { currentUser, Langage } = useContext(UserContext)
     const navigate = useNavigate();
     const FeaturesCardRef = useRef();
     const [FeaturesCardIsVisible, setFeaturesCardIsVisible] = useState(false);
@@ -47,7 +47,7 @@ const Accueil = () => {
 
                 <div className="contain">
                     <p className="ValorantTitle">
-                        {currentUser ? "Bienvenue " + currentUser.displayName : "Un Client de L'API Valorant pour tout connaitre du jeux"}
+                        {currentUser ? Langage.Accueil.bienvenue + " " + currentUser.displayName : "Un Client de L'API Valorant pour tout connaitre du jeux"}
 
                     </p>
                     <svg id="SVGvalo"
@@ -67,7 +67,7 @@ const Accueil = () => {
                         >
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">Voir Les Agents</span>
+                                <span className="btn__content">{Langage.Accueil.showAgentsButton}</span>
                             </span>
                         </button>
                     </div>
@@ -103,30 +103,30 @@ const Accueil = () => {
                         onClick={() => {
                             navigate("/Agents");
                         }}
-                        title="Agents"
-                        description="Donnée de tout les agents et leur description"
+                        title={Langage.Accueil.Features.titleAgents}
+                        description={Langage.Accueil.Features.Agents}
                         icon={<GroupsIcon fontSize="large" className="icon" />}
                     />
                     <FeaturesCard
                         onClick={() => {
                             navigate("/Armes");
                         }}
-                        title="Armes"
-                        description="Donnée de toute les armes et leur state"
+                        title={Langage.Accueil.Features.titleArmes}
+                        description={Langage.Accueil.Features.Armes}
                         icon={<LocalPoliceIcon fontSize="large" className="icon" />}
                     />
                     <FeaturesCard
                         onClick={() => {
                             navigate("/Cartes");
                         }}
-                        title="Cartes"
-                        description="Donnée de tout les cartes et leur plans"
+                        title={Langage.Accueil.Features.titleCartes}
+                        description={Langage.Accueil.Features.Cartes}
                         icon={<MapIcon fontSize="large" className="icon" />}
                     />
                 </div>
             </div>
             <div className="features">
-                <h2>EVENEMENTS VALORANT</h2>
+                <h2>{Langage.Accueil.EventTitle} VALORANT</h2>
 
                 <div className="FeaturesSubBar"></div>
                 <div className="featuresCardAll">
