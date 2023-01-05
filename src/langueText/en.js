@@ -11,9 +11,7 @@ export const en = {
     Profil: {
         updateButton: "Update",
         logOutButton: "Log out",
-        frButton: "French",
-        enButton: "English",
-        esButton: "Espagnol",
+
         FavorisButton: "Favorite",
         showButtonLang: "choose langage"
 

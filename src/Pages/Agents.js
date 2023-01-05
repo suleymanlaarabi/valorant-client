@@ -18,13 +18,13 @@ const Agents = () => {
 
     const addMoreAgent = () => {
         if (NumberAgentsDisplay > AllAgentInfo.length) {
-            console.log("true", NumberAgentsDisplay, AllAgentInfo.length)
+
             setMoreAgentState(true)
 
             return;
         } else {
             setMoreAgentState(false)
-            console.log("false", NumberAgentsDisplay, AllAgentInfo.length)
+
 
             var Agents = []
             for (var i = 0; i < NumberAgentsDisplay; i++) {

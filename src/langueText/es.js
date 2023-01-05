@@ -4,22 +4,20 @@ export const es = {
         accueilButtonText: "Casa",
         agentsButtonText: "Agentes",
         armesButtonText: "Armas",
-        cartesButtonText: "Tarjetas",
+        cartesButtonText: "Mapas",
         ProfilButton: "Perfil",
         FavorisButton: "Favoritos"
     },
     Profil: {
         updateButton: "actualizar",
         logOutButton: "cerrar sesión",
-        frButton: "francés",
-        enButton: "inglés",
-        esButton: "Espagnoles",
+
         FavorisButton: "Favoritos",
         showButtonLang: "elige el idioma"
 
     },
     Cartes: {
-        title: "Tarjetas"
+        title: "Mapas"
 
     },
     Armes: {
@@ -27,17 +25,17 @@ export const es = {
 
     },
     Accueil: {
-        bienvenue: "Bienvenida",
+        bienvenue: "Bienvenidos",
         showAgentsButton: "Mostrar agentes",
         Features: {
-            Agents: "Datos de todos los agentes y su descripción",
-            Armes: "Datos de todas las armas y su estado",
+            Agents: "Datos de todos los agentes y su descripciónes",
+            Armes: "Datos de todas las armas y sus estados",
             Cartes: "Datos de todos los mapas y sus planos",
             titleAgents: "Agentes",
             titleArmes: "Armas",
-            titleCartes: "Tarjetas"
+            titleCartes: "Mapas"
         },
-        EventTitle: "Event"
+        EventTitle: "Eventos"
 
     },
     Agents: {
@@ -47,7 +45,7 @@ export const es = {
     },
     Favoris: {
         title: "Favoritos",
-        NoAgentText: "Ningún agente en tu favorito",
+        NoAgentText: "Ningún agente es favorito",
 
 
     }

@@ -15,7 +15,7 @@ const Profil = () => {
         gsap
             .to(".buttonAnim", { opacity: 1, duration: 0.4, y: 100 })
 
-        console.log(auth)
+
     }, [])
     const handleFormPseudo = async (e) => {
         e.preventDefault()
@@ -109,19 +109,19 @@ const Profil = () => {
                         <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "fr-FR"); setLangage(AllLangage.fr); document.getElementById("setLangButton").style.display = "none"; document.getElementById("showDivLangButto").style.display = "block" }} className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">{Langage.Profil.frButton}</span>
+                                <span className="btn__content">Francais</span>
                             </span>
                         </button>
                         <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "en-US "); setLangage(AllLangage.en); document.getElementById("setLangButton").style.display = "none"; document.getElementById("showDivLangButto").style.display = "block" }} className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">{Langage.Profil.enButton}</span>
+                                <span className="btn__content">English</span>
                             </span>
                         </button>
                         <button style={{ marginLeft: 10, marginRight: 10 }} onClick={() => { localStorage.setItem("lang", "es-ES "); setLangage(AllLangage.es); document.getElementById("setLangButton").style.display = "none"; document.getElementById("showDivLangButto").style.display = "block" }} className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">{Langage.Profil.esButton}</span>
+                                <span className="btn__content">Español</span>
                             </span>
                         </button>
                     </div>

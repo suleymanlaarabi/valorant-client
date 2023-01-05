@@ -68,10 +68,10 @@ const AgentInfo = () => {
     useEffect(() => {
         gsap.to(".animateAgentInfo", { opacity: 1, duration: 0.25, stagger: 0.2, top: 100 }).then(() => {
             if (AgentFavoris.includes(AgentInfo.pseudo)) {
-                console.log("yes")
+
                 setIsFavoris(true)
             } else {
-                console.log("no")
+
                 setIsFavoris(false)
             }
 
