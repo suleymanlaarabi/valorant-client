@@ -13,6 +13,7 @@ import Cartes from "./Pages/Cartes";
 import Favoris from "./Pages/Private/Favoris";
 import Private from "./Pages/Private/Private";
 import Profil from "./Pages/Private/Profil";
+import Report from "./Pages/Report";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Accueil />} />
               <Route path="/Agents" element={<Agents />} />
+              <Route path="/Report" element={<Report />} />
               <Route path="/Armes" element={<Armes />} />
               <Route path="/Cartes" element={<Cartes />} />
               <Route path="/AgentInfo/:uuid" element={<AgentInfo />} />

@@ -15,7 +15,21 @@ footer{
 }
 
 #iconFooter:hover{
-        cursor: pointer;
+cursor: pointer;
         transform: scale(1.4);
     
+}
+.FooterLink{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+.footer a {
+        margin: 10px;
+        transition: all 0.3s;
+}
+
+.footer a:hover {
+cursor: pointer;
+        transform: scale(1.4);
 }
