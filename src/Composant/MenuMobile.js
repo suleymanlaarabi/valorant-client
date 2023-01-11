@@ -1,12 +1,12 @@
 import React from 'react';
 import "./css/MenuMobile.css"
 import NavLinkButton from './NavLinkButton';
-const MenuMobile = () => {
+const MenuMobile = (props) => {
     return (
         <>
 
             <div className='MenuMobile'>
-                <NavLinkButton />
+                <NavLinkButton close={props.close} />
             </div>
         </>
 

@@ -3,25 +3,26 @@ import React, { useContext, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import { UserContext } from '../Context/userContext';
 
-const NavLinkButton = () => {
+const NavLinkButton = (props) => {
     const { Langage } = useContext(UserContext)
     useEffect(() => {
         gsap
-            .to(".buttonAnim", { opacity: 1, duration: 0.4, y: 100, stagger: 0.3 })
+            .to(".buttonAnim", { opacity: 1, duration: 0.4, y: 100 })
+
     }, [])
 
     return (
         <>
-            <NavLink className="buttonAnim link" to="/">
+            <NavLink onClick={props.close} className="buttonAnim link" to="/">
                 {Langage.NavBar.accueilButtonText}
             </NavLink>
-            <NavLink className="buttonAnim link" to="/Agents">
+            <NavLink onClick={props.close} className="buttonAnim link" to="/Agents">
                 {Langage.NavBar.agentsButtonText}
             </NavLink>
-            <NavLink className="buttonAnim link" to="/Armes">
+            <NavLink onClick={props.close} className="buttonAnim link" to="/Armes">
                 {Langage.NavBar.armesButtonText}
             </NavLink>
-            <NavLink className="buttonAnim link" to="/Cartes">
+            <NavLink onClick={props.close} className="buttonAnim link" to="/Cartes">
                 {Langage.NavBar.cartesButtonText}
             </NavLink>
         </>

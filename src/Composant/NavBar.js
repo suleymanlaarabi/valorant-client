@@ -131,7 +131,7 @@ const NavBar = () => {
 
 
             </nav>
-            {DisplayMenuMobile && <MenuMobile />}
+            {DisplayMenuMobile && <MenuMobile close={handleCloseMenuMobile} />}
 
         </>
 
