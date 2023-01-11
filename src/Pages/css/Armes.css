@@ -24,6 +24,11 @@
     position: relative;
     top: -100px;
 }
+@media (max-width:700px) {
+    .Arme {
+        width: 100%;
+    }
+}
 
 .Arme:hover {
     cursor: pointer;

@@ -25,7 +25,11 @@
     top: -100px;
     
 }
-
+@media (max-width:700px) {
+    .Carte {
+        width: 100%;
+    }
+}
 .Carte:hover {
     cursor: pointer;
         background: rgba(255, 255, 255, 0.05);

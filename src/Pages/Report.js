@@ -1,8 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import './css/Report.css'
 import axios from "axios";
+import { UserContext } from '../Context/userContext';
 
 const Report = () => {
+    const { setNotify } = useContext(UserContext)
+
 
     const inputs = useRef([])
     const formRef = useRef()
@@ -16,7 +19,19 @@ const Report = () => {
         e.preventDefault()
 
         axios.get("http://127.0.0.1:4000/report/" + inputs.current[1].value + "/" + inputs.current[0].value).then(res => {
-            console.log(res)
+            console.log(res.data)
+            if (res.data === "error") {
+                setNotify({
+                    isTrue: true,
+                    text: "Impossible d'envoyer le message"
+                })
+            } else {
+                setNotify({
+                    isTrue: true,
+                    text: "Message Envoyer"
+                })
+            }
+
         })
 
     }

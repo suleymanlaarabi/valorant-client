@@ -1,11 +1,13 @@
 import gsap from "gsap";
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import logo from "../assets/logo.png"
 import "./css/NavBar.css";
 import ModalSignIn from "./ModalSignIn";
 import ModalSignUp from "./ModalSignUp";
+import MenuMobile from "./MenuMobile";
+import NavLinkButton from "./NavLinkButton";
 
 
 const NavBar = () => {
@@ -35,9 +37,7 @@ const NavBar = () => {
         });
     }, [currentUser]);
 
-    const GsapRestart = () => {
 
-    };
 
     const setModal = () => {
         setSignModal({
@@ -45,83 +45,96 @@ const NavBar = () => {
             SignUp: false
         })
     }
+    const [DisplayMenuMobile, setDisplayMenuMobile] = useState(false)
+    const handleCloseMenuMobile = () => {
+        setDisplayMenuMobile(false)
+    }
 
     return (
-        <nav>
-            {SignModal.SignIn ? <ModalSignIn close={setModal} /> : null}
-            {SignModal.SignUp ? <ModalSignUp close={setModal} /> : null}
+        <>
+            <nav>
+                {SignModal.SignIn ? <ModalSignIn close={setModal} /> : null}
+                {SignModal.SignUp ? <ModalSignUp close={setModal} /> : null}
 
-            <img className="logo" src={logo} alt="" />
-            <div className="LinkNav">
-                <NavLink onClick={GsapRestart} className="buttonAnim link" to="/">
-                    {Langage.NavBar.accueilButtonText}
-                </NavLink>
-                <NavLink className="buttonAnim link" to="/Agents">
-                    {Langage.NavBar.agentsButtonText}
-                </NavLink>
-                <NavLink className="buttonAnim link" to="/Armes">
-                    {Langage.NavBar.armesButtonText}
-                </NavLink>
-                <NavLink className="buttonAnim link" to="/Cartes">
-                    {Langage.NavBar.cartesButtonText}
-                </NavLink>
-            </div>
-            <div className="SignButton">
-                {!currentUser && <><div onClick={() => {
-                    setSignModal({
-                        SignIn: true,
-                        SignUp: false
-                    })
-                }} className="animate buttonAnim button">
-                    <button className="btn btn--light">
-                        <span className="btn__inner">
-                            <span className="btn__slide"></span>
-                            <span className="btn__content">Se connecter</span>
-                        </span>
-                    </button>
+                <img className="logo" src={logo} alt="" />
+                <div className="LinkNav">
+                    <NavLinkButton />
                 </div>
+                <div className="SignButton">
                     <div onClick={() => {
-                        setSignModal({
-                            SignIn: false,
-                            SignUp: true
-                        })
-                    }} className="animate buttonAnim button">
-                        <button className="btn btn--light">
+                        if (DisplayMenuMobile) {
+                            setDisplayMenuMobile(false)
+                        } else {
+                            setDisplayMenuMobile(true)
+                        }
+                    }} className="animate buttonAnim button  ">
+                        <button className="btn btn--light MenuButton ">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">S'inscrire</span>
-                            </span>
-                        </button>
-                    </div></>}
-
-                {currentUser && <>
-                    <div onClick={() => { navigate("/private/profil") }} className="animate buttonAnim button ">
-                        <button className="btn btn--light">
-                            <span className="btn__inner">
-                                <span className="btn__slide"></span>
-                                <span className="btn__content">{Langage.NavBar.ProfilButton}</span>
+                                <span className="btn__content">Menu</span>
                             </span>
                         </button>
                     </div>
-                    <div onClick={() => {
-                        navigate("/private/favoris")
+                    {!currentUser && <><div onClick={() => {
+                        setSignModal({
+                            SignIn: true,
+                            SignUp: false
+                        })
                     }} className="animate buttonAnim button ButtonLike">
                         <button className="btn btn--light">
                             <span className="btn__inner">
                                 <span className="btn__slide"></span>
-                                <span className="btn__content">{Langage.NavBar.FavorisButton}</span>
+                                <span className="btn__content">Se connecter</span>
                             </span>
                         </button>
                     </div>
+                        <div onClick={() => {
+                            setSignModal({
+                                SignIn: false,
+                                SignUp: true
+                            })
+                        }} className="animate buttonAnim button signUpButton">
+                            <button className="btn btn--light">
+                                <span className="btn__inner">
+                                    <span className="btn__slide"></span>
+                                    <span className="btn__content">S'inscrire</span>
+                                </span>
+                            </button>
+                        </div></>}
 
-                </>}
+                    {currentUser && <>
+                        <div onClick={() => { navigate("/private/profil") }} className="animate buttonAnim button ">
+                            <button className="btn btn--light">
+                                <span className="btn__inner">
+                                    <span className="btn__slide"></span>
+                                    <span className="btn__content">{Langage.NavBar.ProfilButton}</span>
+                                </span>
+                            </button>
+                        </div>
+                        <div onClick={() => {
+                            navigate("/private/favoris")
+                        }} className="animate buttonAnim button ButtonLike">
+                            <button className="btn btn--light">
+                                <span className="btn__inner">
+                                    <span className="btn__slide"></span>
+                                    <span className="btn__content">{Langage.NavBar.FavorisButton}</span>
+                                </span>
+                            </button>
+                        </div>
+
+                    </>}
 
 
 
 
-            </div>
+                </div>
 
-        </nav>
+
+            </nav>
+            {DisplayMenuMobile && <MenuMobile />}
+
+        </>
+
     );
 };
 

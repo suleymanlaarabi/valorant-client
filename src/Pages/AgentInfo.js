@@ -1,6 +1,6 @@
 import axios from "axios";
 import gsap from "gsap";
-import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../Context/userContext";
 import "./css/AgentInfo.css";
@@ -24,7 +24,7 @@ const AgentInfo = () => {
         var Favoris = []
         Fav.map((e) => {
 
-            Favoris.push(e.pseudo)
+            return Favoris.push(e.pseudo)
         })
         setAgentFavoris(Favoris)
 

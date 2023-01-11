@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth';
 import gsap from 'gsap';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/userContext';
 import { auth } from '../../firebase-config';

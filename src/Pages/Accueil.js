@@ -10,6 +10,10 @@ import gsap from "gsap";
 import { UserContext } from "../Context/userContext";
 
 const Accueil = () => {
+
+    const [ScreenWidth, setScreenWidth] = useState(window.innerWidth)
+
+
     const { currentUser, Langage } = useContext(UserContext)
     const navigate = useNavigate();
     const FeaturesCardRef = useRef();
@@ -22,7 +26,28 @@ const Accueil = () => {
             y: 100,
         });
     }
+
     useEffect(() => {
+
+        var resizeIsTrue = true
+        window.addEventListener('resize', () => {
+            if (resizeIsTrue) {
+                resizeIsTrue = false
+                window.setTimeout(() => {
+
+                    setScreenWidth(window.innerWidth)
+                    console.log("frame")
+
+                    resizeIsTrue = true
+                }, 1000)
+            }
+
+        })
+
+
+    }, [])
+    useEffect(() => {
+
         const observer = new IntersectionObserver((entries) => {
             const entry = entries[0];
             setFeaturesCardIsVisible(entry.isIntersecting);
@@ -38,12 +63,13 @@ const Accueil = () => {
                 });
             });
         });
-    }, []);
+
+    }, [ScreenWidth]);
 
     return (
         <div className="Accueil">
 
-            <div className="heroBanner">
+            {ScreenWidth > 700 ? <div className="heroBanner">
 
                 <div className="contain">
                     <p className="ValorantTitle">
@@ -87,7 +113,9 @@ const Accueil = () => {
                         type="video/mp4"
                     />
                 </video>
-            </div>
+            </div> : ""}
+
+
             <div className="features">
                 <h2>FEATURES</h2>
 

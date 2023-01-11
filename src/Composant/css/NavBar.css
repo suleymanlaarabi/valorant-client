@@ -83,11 +83,25 @@ height: 120px;
     
 }
 
+.MenuButton{
+    display: none;
+}
 
 
-@media (max-width:1295px) {
+@media (max-width:1395px) {
     .ButtonLike {
             display: none;
             
         }
+}
+
+@media (max-width:1050px) {
+    .ButtonLike, .signUpButton {
+        display: none;
+
+    }
+        .MenuButton {
+            display: block;
+        }
+        .LinkNav{display: none;}
 }
