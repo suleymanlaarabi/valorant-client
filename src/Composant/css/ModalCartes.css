@@ -24,6 +24,22 @@
                 animation: startModal 0.3s;
 
 }
+@media (max-width:650px) {
+    .Modal {
+        width: 100vw;
+        height: 100vh;
+
+    }
+      .Modal  .Buttons{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+       .Modal .Buttons   .ModalCloseButton{
+        margin: 10px;
+       }
+}
 .Modal img{
     width: 250px;
 margin-bottom: 50px;

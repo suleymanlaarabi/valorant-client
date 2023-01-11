@@ -30,6 +30,13 @@
         animation: startModal 0.3s;
 
 }
+@media (max-width:650px) {
+    .Modal {
+           width: 100vw;
+           height: 100vh;
+    
+        }
+}
 .Modal img{
     width: 350px;
     opacity: 0;

@@ -47,6 +47,13 @@ h1{
 
     
 }
+@media (max-width:650px) {
+    .Modal {
+        width: 100vw;
+        height: 100vh;
+
+    }
+}
 
 @keyframes opacity {
     0% {
