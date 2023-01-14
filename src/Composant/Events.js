@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import FeaturesCard from "./FeaturesCard";
 import CelebrationIcon from "@mui/icons-material/Celebration";
 import { UserContext } from "../Context/userContext";
+import gsap from "gsap";
 const Events = () => {
     const [EventInfo, setEventInfo] = useState([]);
     const { Langage } = useContext(UserContext)
@@ -23,7 +24,16 @@ const Events = () => {
                 });
             });
     }, []);
-    useLayoutEffect(() => { }, [EventInfo]);
+    useEffect(() => {
+        gsap.to(".featuresCard", {
+            opacity: 1,
+            duration: 0.4,
+            stagger: 0.3,
+            y: 100,
+        });
+    }, [EventInfo])
+
+    useEffect(() => { }, [EventInfo]);
     return (
         <>
             {EventInfo.map((data, key) => {

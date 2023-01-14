@@ -6,7 +6,7 @@ min-height: calc(100vh - 408px);}
     justify-content: center;
     align-items: center;
    padding: 10px;
-  
+  flex-wrap: wrap;
     
         
 }

@@ -87,6 +87,7 @@ const ModalSignUp = (props) => {
             <div className="Modal">
                 <h2>S'inscrire</h2>
                 <form ref={formRef}>
+                    <h4 style={{ color: "red" }}>{Validation}</h4>
                     <input ref={addInputs} type="text" name="" placeholder="email" id="" />
                     <input ref={addInputs} type="password" name="" placeholder="mot de passe" id="" />
                     <input ref={addInputs} type="password" name="" placeholder="repeter le mot de passe" id="" />
@@ -115,8 +116,16 @@ const ModalSignUp = (props) => {
                             </span>
                         </button>
                     </div>
-                    <h4 style={{ color: "red" }}>{Validation}</h4>
 
+
+                    <div onClick={props.close} className="animate SignButtonModal">
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">Fermer</span>
+                            </span>
+                        </button>
+                    </div>
                 </form>
             </div>
         </>

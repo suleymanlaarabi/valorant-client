@@ -17,15 +17,20 @@ const Accueil = () => {
     const { currentUser, Langage } = useContext(UserContext)
     const navigate = useNavigate();
     const FeaturesCardRef = useRef();
+
     const [FeaturesCardIsVisible, setFeaturesCardIsVisible] = useState(false);
-    if (FeaturesCardIsVisible === true) {
-        gsap.to(".featuresCard", {
-            opacity: 1,
-            duration: 0.4,
-            stagger: 0.3,
-            y: 100,
-        });
-    }
+    useEffect(() => {
+        if (FeaturesCardIsVisible === true) {
+
+            gsap.to(".featuresCard", {
+                opacity: 1,
+                duration: 0.4,
+                stagger: 0.3,
+                y: 100,
+            });
+        }
+    }, [FeaturesCardIsVisible])
+
 
     useEffect(() => {
 

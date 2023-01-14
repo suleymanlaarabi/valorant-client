@@ -24,25 +24,7 @@
                 animation: startModal 0.3s;
 
 }
-@media (max-width:650px) {
-    .Modal {
-        width: 100vw;
-        height: 100vh;
-        overflow: scroll;
-        padding-top: 30px;
-        padding-bottom: 30px;
 
-    }
-      .Modal  .Buttons{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-       .Modal .Buttons   .ModalCloseButton{
-        margin: 10px;
-       }
-}
 .Modal img{
     width: 250px;
 margin-bottom: 50px;
@@ -81,4 +63,25 @@ margin-bottom: 50px;
 .Regions h5{
     margin-left: 6px;
     margin-right: 6px;
+}
+
+@media (max-width:650px) {
+   
+ .Modal {
+     width: 100vw;
+     height: 600px;
+     overflow-y: scroll;
+     z-index: 2001;
+
+ }
+    .Modal .Buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Modal .Buttons .ModalCloseButton {
+        margin: 10px;
+    }
 }

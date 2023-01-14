@@ -105,6 +105,15 @@ const ModalSignIn = (props) => {
                             </span>
                         </button>
                     </div>
+                    <div onClick={props.close} className="animate SignButtonModal">
+                        <button className="btn btn--light">
+                            <span className="btn__inner">
+                                <span className="btn__slide"></span>
+                                <span className="btn__content">Fermer</span>
+                            </span>
+                        </button>
+                    </div>
+
 
                     <h4 style={{ color: "red" }}>{Validation}</h4>
                 </form>

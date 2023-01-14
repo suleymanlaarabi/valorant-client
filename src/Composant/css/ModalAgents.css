@@ -70,3 +70,23 @@ h1{
         transform: scale(0.3);
     }
 }
+
+@media (max-width:650px) {
+    .Modal {
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+
+    }
+
+    .Modal .Buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Modal .Buttons .ModalCloseButton {
+        margin: 10px;
+    }
+}
